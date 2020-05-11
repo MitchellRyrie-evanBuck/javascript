@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>submit()方法</title>
+</head>
+<body>
+    <form action="#">
+        <input type="text" id="username">
+        <input type="button" id="btn" value="提交">
+    </form>
+    <script>
+        var btn = document.getElementById("btn")
+        btn.addEventListener("click",function(event){
+     
+            var form = document.forms[0]
+            form.submit()
+        })
+        
+    </script>
+</body>
+</html>

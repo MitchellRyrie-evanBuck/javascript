@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>select 专属</title>
+</head>
+<body>
+    <form action="#">
+        <select id="city">
+            <option id="bjjj" value="bj">北京</option>
+            <option value="sh">sahnghai</option>
+            <option value="sd">shandong</option>
+        </select>
+        <select id="city2" multiple size="5">
+            <option value="bj">北京</option>
+            <option value="sh">sahnghai</option>
+            <option value="sd">shandong</option>
+        </select>
+    </form>
+    <script>
+        // htmlselectelement对象
+        var city = document.getElementById("city")
+        console.log(city.length)
+        console.log(city.options)
+        // 被选中<option>的索引值
+        console.log(city.selectedIndex) 
+
+        var city2 = document.getElementById("city2");
+        // size 默认值为0
+        console.log(city2.size)
+
+        console.log(city.item(1))
+        city.remove(2)
+
+        var bj = document.getElementById("bjjj")
+        console.log(bj.index)
+        console.log(bj.selected)
+        console.log(bj.text)
+        console.log(bj.value)
+    </script>
+</body>
+</html>

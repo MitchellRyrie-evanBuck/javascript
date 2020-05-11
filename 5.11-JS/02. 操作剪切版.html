@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作剪切板</title>
+</head>
+<body>
+    <form>
+        <input type="text" id="username" value="请输入你的用户名">
+        <input type="text" id="username2">
+        <input type="submit">
+
+    </form>
+    <script>
+        // let result
+        let username = document.getElementById("username")
+        username.addEventListener("copy",function(event){
+            let data = event.clipboardData || window.clipboardData
+            console.log(data)
+            console.log("这是复制")
+            let value = username.value
+            let result = value.substring(username.selectionStart,username.selectionEnd)
+            console.log(result)
+            data.setData("text",result);
+        })
+        username.addEventListener("cut",function(){
+            console.log("这是一个剪切操作")
+        })
+        let username2 = document.getElementById("username2")
+        username2.addEventListener("paste",function(event){
+            event.preventDefault()
+            let data = event.clipboardData || window.clipboardData
+              // getDATA()获取
+            let result = data.getData("text")
+            console.log(result)
+          
+    
+            if(result === "用户名"){
+                result = "***"
+            }
+            username2.value = result
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>submit</title>
+</head>
+<body>
+    <form action="#">
+        <input type="text" id="username">
+        <input type="submit">
+    </form>
+    <script>
+        var form = document.forms[0]
+        form.addEventListener("submit",function(event){
+            console.log("当前表单已提交")
+            event.preventDefault()
+        })
+        
+    </script>
+</body>
+</html>

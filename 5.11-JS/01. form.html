@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="username" name="username" value="请输入你的用户名">
+
+    <script>
+
+
+        let username = document.getElementById("username")
+        // username.select()
+        username.addEventListener("select" ,function(event){
+            console.log("this is liuxiaowen")
+            console.log(event.ClipboardData)
+        })
+    </script>
+</body>
+</html>
