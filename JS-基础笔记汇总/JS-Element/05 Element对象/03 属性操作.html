@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>属性操作</title>
+</head>
+
+<body>
+  <p id="p1" class="text">这是一段用于测试的内容.</p>
+  <script>
+    var pElement = document.getElementById('p1')
+    // hasAttribute(attrName)方法: 用于判断指定元素是否存在某个属性
+    console.log(pElement.hasAttribute('id'))
+    // hasAttributes()方法: 用于判断指定元素是否存在属性
+    console.log(pElement.hasAttributes())
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取内部的宽度和高度</title>
+  <style>
+    .box {
+      box-sizing: border-box;
+      width: 200px;
+      height: 200px;
+      padding: 50px;
+      border: 10px solid #000;
+      margin: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box" class="box"></div>
+  <script>
+    var box = document.getElementById('box')
+    /*
+     获取元素的内部宽度和高度: clientWidth和clientHeight
+     * 盒子模型:
+       * content-box: clientWidth=width+padding; clientHeight=height+padding
+       * border-box: clientWidth=width-border; clientHeight=height-border
+     * 得到的值是不带单位的
+     * 是只读属性
+     */
+    console.log(box.clientWidth, box.clientHeight)
+  </script>
+</body>
+
+</html>

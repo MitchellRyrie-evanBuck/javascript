@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>表单提交事件</title>
+</head>
+
+<body>
+  <form action="#" id="login">
+    <input type="text" id="username">
+    <input type="password" id="password">
+    <input type="submit" value="登录">
+  </form>
+  <script>
+    var form = document.getElementById('login')
+    form.addEventListener('submit', function (event) {
+      // 完成表单验证的逻辑
+      console.log('表示表单要提交了...')
+      event.preventDefault()
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>节点集合</title>
+</head>
+
+<body>
+  <select name="menu" id="menu">
+    <option value="beijing">北京</option>
+    <option value="tianjin">天津</option>
+    <option value="shanghai">上海</option>
+    <option value="chongqing">重庆</option>
+    <option value="nanjing">南京</option>
+  </select>
+  <script>
+    /*
+      得到NodeList集合:
+      * getElementsByName()方法
+      * querySelectorAll()方法
+      得到HTMLCollection集合:
+      * getElementsByClassName()方法
+      * getElementsByTagName()方法
+     */
+    var nodeList = document.querySelectorAll('option')
+    var htmlCollection = document.getElementsByTagName('option')
+    /*
+      NodeList集合: 是静态集合, 不会跟随HTML页面元素的变化而变化
+      HTMLCollection集合: 是动态集合, 会跟随这HTML页面元素的变化而变化
+     */
+    console.log(nodeList, htmlCollection)
+    // 向<select>元素新增一组<option>元素
+    var option = document.createElement('option')
+    option.setAttribute('value', 'baoding')
+    option.textContent = '保定'
+    var select = document.getElementById('menu')
+    select.append(option)
+
+    console.log(nodeList, htmlCollection)
+  </script>
+</body>
+
+</html>

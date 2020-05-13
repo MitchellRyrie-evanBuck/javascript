@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>事件委托</title>
+</head>
+
+<body>
+  <ul id="city">
+    <li>北京</li>
+    <li>天津</li>
+    <li>上海</li>
+  </ul>
+  <script>
+    var city = document.getElementById('city')
+    // 为id为city元素中所有的<li>子元素绑定相同事件
+    // var liElements = city.getElementsByTagName('li')
+    // for (var i = 0; i < liElements.length; i++) {
+    //   var liElement = liElements[i]
+    //   liElement.addEventListener('click', function () {
+    //     console.log('你终于点击了我...')
+    //   })
+    // }
+    // 新增<li>元素: 默认没有绑定相同事件的
+    // var newLiElement = document.createElement('li')
+    // newLiElement.textContent = '重庆'
+    // city.appendChild(newLiElement)
+
+    // newLiElement.addEventListener('click', function () {
+    //   console.log('你终于点击了我...')
+    // })
+
+    // 事件委托: 为所有元素的共同父级元素绑定事件
+    city.addEventListener('click', function (event) {
+      var target = event.target
+      if (target.nodeName === 'LI') {
+        console.log('你终于点击了我...')
+      }
+    })
+    // 新增<li>元素
+    var newLiElement = document.createElement('li')
+    newLiElement.textContent = '重庆'
+    city.appendChild(newLiElement)
+  </script>
+</body>
+
+</html>

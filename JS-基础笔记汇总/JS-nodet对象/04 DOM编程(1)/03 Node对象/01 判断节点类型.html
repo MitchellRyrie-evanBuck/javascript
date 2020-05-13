@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>判断节点类型</title>
+</head>
+
+<body>
+  <div id="box" class="box">这是一段测试的内容.</div>
+  <script>
+    // <div>元素 -> 元素节点
+    var divElement = document.getElementById('box')
+    // class属性 -> 属性节点
+    var attrNode = divElement.getAttributeNode('id')
+    // 文本内容 -> 文本节点
+    var textNode = divElement.firstChild
+    /*
+       元素节点的nodeName、nodeType和nodeValue
+       * 元素节点的nodeName属性值: 全大写的元素名称
+       * 元素节点的nodeType属性值: 1
+       * 元素节点的nodeValue属性值: null
+     */
+    console.log(divElement.nodeName, divElement.nodeType, divElement.nodeValue)
+    /*
+      文本节点的nodeName、nodeType和nodeValue
+      * 文本节点的nodeName属性值: #text
+      * 文本节点的nodeType属性值: 3
+      * 文本节点的nodeValue属性值: 文本内容
+     */
+    console.log(textNode.nodeName, textNode.nodeType, textNode.nodeValue)
+    /*
+      属性节点的nodeName、nodeType和nodeValue
+      * 属性节点的nodeName属性值: 属性名称
+      * 属性节点的nodeType属性值: 2
+      * 属性节点的nodeValue属性值: 属性值
+     */
+    console.log(attrNode.nodeName, attrNode.nodeType, attrNode.nodeValue)
+  </script>
+</body>
+
+</html>

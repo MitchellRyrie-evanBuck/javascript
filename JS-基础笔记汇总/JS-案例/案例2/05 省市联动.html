@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>省市联动</title>
+</head>
+
+<body>
+  <label for="province">省份: </label>
+  <select id="province">
+    <option value="">---</option>
+  </select>
+  <label for="city">城市: </label>
+  <select id="city">
+    <option value="">---</option>
+  </select>
+  <script>
+    var datas = [{
+        'province': '河北省',
+        'cities': ['石家庄市', '保定市', '邢台市', '唐山市', '秦皇岛市']
+      },
+      {
+        'province': '山东省',
+        'cities': ['青岛市', '济南市', '日照市', '威海市', '德州市']
+      },
+      {
+        'province': '吉林省',
+        'cities': ['长春市', '吉林市', '白城市', '松原市', '通化市']
+      },
+      {
+        'province': '辽宁省',
+        'cities': ['沈阳市', '大连市', '锦州市', '铁岭市', '朝阳市']
+      },
+      {
+        'province': '黑龙江省',
+        'cities': ['哈尔滨市', '齐齐哈尔市', '漠河市', '鹤岗市', '佳木斯市']
+      }
+    ]
+    // 当页面加载完毕, 省份信息显示在页面中
+    var provinceElement = document.getElementById('province')
+    for (var i = 0; i < datas.length; i++) {
+      var data = datas[i]
+      var provinceValue = data.province
+
+
+      var optionElement = document.createElement('option')
+      optionElement.textContent = provinceValue
+      optionElement.setAttribute('value', provinceValue)
+     
+      provinceElement.appendChild(optionElement)
+    }
+    // 当用户选择具体省份信息时, 显示对应的城市信息
+    provinceElement.onchange = function () {
+      // 先清空城市信息
+      var cityElement = document.getElementById('city')
+      var citiOptionElements = cityElement.getElementsByTagName('option')
+      for (var y = 1; y < citiOptionElements.length; y++) {
+        cityElement.removeChild(citiOptionElements[y])
+        y--
+      }
+
+      // var optionElements = provinceElement.getElementsByTagName('option')
+      // HTMLSelectElement对象的options属性
+      // var optionElements = provinceElement.options
+
+      // for (var i = 0; i < optionElements.length; i++) {
+      //   var optionElement = optionElements[i]
+      //   if (optionElement.selected) {
+      //     // 用户选择的省份信息
+      //     var provinceInfo = optionElement.textContent
+
+      //     for (var j = 0; j < datas.length; j++) {
+      //       var data = datas[j]
+      //       // 数据结构中的省份信息
+      //       var provinceData = data.province
+      //       // 判断用户选择的是哪个省份
+      //       if (provinceInfo === provinceData) {
+      //         var cityDatas = data.cities
+      //         for (var x = 0; x < cityDatas.length; x++) {
+      //           var cityData = cityDatas[x]
+
+      //           var optionElement = document.createElement('option')
+      //           optionElement.textContent = cityData
+      //           optionElement.setAttribute('value', cityData)
+
+      //           cityElement.appendChild(optionElement)
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
+
+      // 用户选择的省份信息
+      var provinceInfo = provinceElement.value
+   
+
+      for (var j = 0; j < datas.length; j++) {
+        var data = datas[j]
+        // 数据结构中的省份信息 
+        var provinceData = data.province
+        // 判断用户选择的是哪个省份
+        if (provinceInfo === provinceData) {
+          var cityDatas = data.cities
+          for (var x = 0; x < cityDatas.length; x++) {
+            var cityData = cityDatas[x]
+            var optionElement = document.createElement('option')
+            optionElement.textContent = cityData
+            optionElement.setAttribute('value', cityData)
+            cityElement.appendChild(optionElement)
+          }
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

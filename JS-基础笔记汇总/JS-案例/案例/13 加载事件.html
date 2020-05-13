@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>加载事件</title>
+  <script>
+    // window表示浏览器窗口 window.onload表示页面加载完毕
+    window.onload = function () {
+      var username = document.getElementById('username')
+      console.log(username.value)
+    }
+  </script>
+</head>
+
+<body>
+  <input type="text" id="username" value="请输入你的用户名">
+  <img id="img" src="imgs/girl.jpg" width="300px">
+  <script>
+    console.log(window)
+    /*
+      load事件: 表示加载事件
+      unload事件: 表示load的反事件
+     */
+
+    // 一定在图片加载完毕后, 执行逻辑
+    var imgElement = document.getElementById('img')
+    imgElement.addEventListener('load', function () {
+      console.log('表示图片已加载完毕...')
+    })
+  </script>
+</body>
+
+</html>

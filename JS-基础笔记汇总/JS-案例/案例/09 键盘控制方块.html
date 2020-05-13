@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>键盘控制方块</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: lightsalmon;
+
+      position: absolute;
+      left: 50px;
+      top: 40%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+  <script>
+    // <html>元素、<body>元素以及document对象都可以绑定键盘事件
+    var html = document.documentElement
+    var body = document.body
+
+    var box = document.getElementsByClassName('box')[0]
+    // 键盘上的上、下、左和右键, 绑定keydown和keyup事件是可以的
+    document.addEventListener('keydown', function (event) {
+      // 获取方块当前的有效样式
+      var style = window.getComputedStyle(box)
+      var boxLeft = parseFloat(style.left)
+      var boxTop = parseFloat(style.top)
+      /* 
+       通过event事件对象可以得到键盘按键信息的属性:
+       * code属性: 前缀 + 键盘信息
+       * key属性: 键盘信息
+       * keyCode属性: 键盘的Unicode信息
+       * which属性: 键盘的Unicode信息
+       */
+      switch (event.key) {
+        case 'ArrowUp': // 上
+          boxTop -= 10
+          break
+        case 'ArrowDown': // 下
+          boxTop += 10
+          break
+        case 'ArrowLeft': // 左
+          boxLeft -= 10
+          break
+        case 'ArrowRight': // 右
+          boxLeft += 10
+          break
+      }
+      // 更新HTML页面
+      box.style.top = boxTop + 'px'
+      box.style.left = boxLeft + 'px'
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>购物车案例</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .cart-container {
+      width: 990px;
+      margin: 100px auto;
+    }
+
+    #title {
+      width: 100px;
+      color: #c81623;
+      margin: 0;
+      padding: 10px 0;
+      border-bottom: 1px solid #c81623;
+    }
+
+    #cart {
+      width: 990px;
+      border: 1px solid #d9d9d9;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    #cart th {
+      height: 50px;
+      background-color: #d9d9d9;
+    }
+
+    #cart td {
+      height: 80px;
+      text-align: center;
+      border-bottom: 1px solid #d9d9d9;
+    }
+
+    #cart td:nth-of-type(1) {
+      width: 60px;
+    }
+
+    #cart td:nth-of-type(2) {
+      width: 400px;
+      text-align: left;
+    }
+
+    #cart td:nth-of-type(3) {
+      width: 80px;
+      text-align: right;
+    }
+
+    #cart td:nth-of-type(4) {
+      width: 250px;
+      padding: 0 80px;
+    }
+
+    #cart td:nth-of-type(5) {
+      width: 80px;
+      text-align: right;
+    }
+
+    #cart td:nth-of-type(4) button,
+    #cart td:nth-of-type(4) input {
+      display: block;
+      height: 25px;
+      border: 1px solid #d9d9d9;
+      outline: none;
+      float: left;
+    }
+
+    #cart td:nth-of-type(4) button {
+      width: 20px;
+      background-color: #fff;
+      cursor: pointer;
+    }
+
+    #cart td:nth-of-type(4) input {
+      width: 50px;
+      border-left: none;
+      border-right: none;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+    }
+
+    #cart td:nth-of-type(4) input:focus {
+      background-color: #dddbdb;
+    }
+
+    #cart td a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    #cart td a:hover {
+      color: #c81623;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="cart-container">
+    <!-- 购物车标题+商品总数 -->
+    <h3 id="title">全部商品 <span id="number">3</span></h3>
+    <!-- 购物车表格 -->
+    <table id="cart">
+      <tr>
+        <th><input type="checkbox" id="checkall"> 全选</th>
+        <th>商品</th>
+        <th>单价</th>
+        <th>数量</th>
+        <th>小计</th>
+        <th>操作</th>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="check"></td>
+        <td>锤子(smartisan) 坚果Pro3 8GB+128GB 黑色 骁龙</td>
+        <td>¥<span name="price">2599.00</span></td>
+        <td>
+          <button disabled name="minus">-</button>
+          <input type="text" name="count" value="1">
+          <button name="add">+</button>
+        </td>
+        <td>¥<span name="subtotal">2599.00</span></td>
+        <td><a name="delete" href="#">删除</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="check"></td>
+        <td>品胜 USB-C苹果PD快充数据线 iPhone11Pro/XsMax/XR/8P Type-</td>
+        <td>¥<span name="price">32.90</span></td>
+        <td>
+          <button disabled name="minus">-</button>
+          <input type="text" name="count" value="1">
+          <button name="add">+</button>
+        </td>
+        <td>¥<span name="subtotal">32.90</span></td>
+        <td><a name="delete" href="#">删除</a></td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" name="check"></td>
+        <td>百诺（Benro）P1S折叠手机稳定器vlog视频直播外接麦克自拍摄像三轴云</td>
+        <td>¥<span name="price">479.00</span></td>
+        <td>
+          <button disabled name="minus">-</button>
+          <input type="text" name="count" value="1">
+          <button name="add">+</button>
+        </td>
+        <td>¥<span name="subtotal">479.00</span></td>
+        <td><a name="delete" href="#">删除</a></td>
+      </tr>
+    </table>
+  </div>
+  <!-- 结算 -->
+
+  <script>
+    // 获取到购物车中所有加按钮
+    var addButtons = document.getElementsByName('add')
+    // 事件的绑定 -> 每次只能绑定一个元素
+    for (var i = 0; i < addButtons.length; i++) {
+      var addButton = addButtons[i]
+      // 绑定鼠标点击事件
+      addButton.onclick = function (event) {
+        /* 
+          如何知道用户现在点击的是哪个加按钮？通过Event事件对象获取
+          * 绑定事件的元素 -> 所有的<button name="add">+</button>
+          * 触发事件的元素
+          Event事件对象的属性 -> 获取目标元素
+          * currentTarget -> 绑定事件的元素
+          * target
+          * this
+         */
+        var targetButton = event.target
+
+        // 操作与之关联的<input>元素
+        var inputElement = targetButton.previousSibling.previousSibling
+       
+        // 从HTML页面中获取数量 -> 从页面中获取到的所有<input>值都是string类型
+        var count = parseInt(inputElement.value)
+        // 逻辑计算
+        count += 1
+        // 更新到HTML页面
+        inputElement.value = count
+
+        // 操作与之关联的减按钮
+        var minusButton = inputElement.previousSibling.previousSibling
+        if (count > 1) {
+          minusButton.removeAttribute('disabled')
+        } else {
+          minusButton.setAttribute('disabled', 'disabled')
+        }
+
+        // 更新与之关联的小计
+        var btnTdElement = targetButton.parentNode
+        var priTdElement = btnTdElement.previousSibling.previousSibling
+        var priceElement = priTdElement.childNodes[1]
+     
+        var price = parseFloat(priceElement.firstChild.nodeValue)
+        // 计算
+        var subtotal = price * count
+        // 保留两位
+        var subtotal = subtotal.toFixed(2)
+        // if (String(subtotal).indexOf('.') === -1) {
+        //   subtotal = subtotal + '.00'
+        // }
+
+        var subTdElement = btnTdElement.nextSibling.nextSibling
+        var subtotalElement = subTdElement.childNodes[1]
+        subtotalElement.textContent = subtotal
+
+        // 将与之关联的复选框进行勾选
+        var trElement = btnTdElement.parentNode
+        var checkTdElement = trElement.childNodes[1]
+        var checkboxElement = checkTdElement.firstChild
+        checkboxElement.setAttribute('checked', 'checked')
+
+        // 将当前这一行的背景颜色修改 #fff4e8
+        trElement.style.backgroundColor = '#fff4e8'
+      }
+    }
+  </script>
+</body>
+
+</html>

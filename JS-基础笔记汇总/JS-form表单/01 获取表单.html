@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取表单</title>
+</head>
+
+<body>
+  <form action="#" name="form1" id="form1">
+    <input type="text" id="username">
+    <input type="password" id="password">
+    <input type="submit" value="提交">
+  </form>
+  <form action="#" id="form2"></form>
+  <script>
+    // 返回的是 HTMLCollection 集合
+    var forms = document.forms
+    console.log(forms)
+    // 目前不太推荐
+    var form1 = document.form1
+    console.log(form1)
+
+    var elements = form1.elements
+    console.log(elements)
+  </script>
+</body>
+
+</html>

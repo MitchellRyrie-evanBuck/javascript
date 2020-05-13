@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>解决空白节点问题</title>
+  <script src="tools.js"></script>
+</head>
+
+<body>
+  <div id="parent">
+    <div id="box1">box1</div>
+    <div id="box2">box2</div>
+    <div id="box3">box3</div>
+  </div>
+  <script>
+    // 思路一: 如果可以判断出什么情况下是空白节点(内容为回车符的文本节点)
+    // 思路二: 根据空白节点产生的具体情况进行处理
+    function firstChild(parentNode) {
+      return parentNode.firstChild.nextSibling
+    }
+
+    function lastChild(parentNode) {
+      return parentNode.lastChild.previousSibling
+    }
+
+    function childNodes(parentNode) {
+      var childNodes = parentNode.childNodes
+      var arr = []
+      for (var i = 0; i < childNodes.length; i++) {
+        if (i % 2 == 1) {
+          arr.push(childNodes[i])
+        }
+      }
+      return arr
+    }
+
+    function previousSibling(targetNode) {
+      return targetNode.previousSibling.previousSibling
+    }
+
+    function nextSibling(targetNode) {
+      return targetNode.nextSibling.nextSibling
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>阻止默认行为</title>
+</head>
+
+<body>
+  <a id="link" href="#">链接</a>
+  <a href="javascript: return false;">链接</a>
+  <script>
+    var link = document.getElementById('link')
+    // 1.Event事件对象的preventDefault()方法
+    link.onclick = function (event) {
+      event.preventDefault();
+    }
+    // 2.函数的return语句: return false;
+    link.onclick = function () {
+      return false
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>change事件</title>
+</head>
+
+<body>
+  <select name="city" id="city">
+    <option value="beijing">北京</option>
+    <option value="tianjin" selected>天津</option>
+    <option value="chongqing">重庆</option>
+    <option value="shanghai">上海</option>
+    <option value="nanjing">南京</option>
+  </select>
+  <script>
+    var city = document.getElementById('city')
+    city.addEventListener('change', function () {
+      console.log(city.value)
+    })
+  </script>
+</body>
+
+</html>

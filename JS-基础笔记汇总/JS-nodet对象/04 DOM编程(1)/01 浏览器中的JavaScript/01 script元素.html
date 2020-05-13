@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>script元素</title>
+  <!-- 
+    <script>元素: 引入脚本
+    * type属性: 设置当前引入的脚本语言
+    * language属性: 设置当前引入的脚本语言
+    * src属性: 设置引入脚本文件的路径
+   -->
+  <script>
+    console.log('this is javascript.')
+  </script>
+  <!-- 
+    浏览器解析HTML页面时: 自上向下的顺序
+    1. 先加载javascript代码 -> 包含获取页面元素的内容, 导致失败
+    2. 再加载HTML元素
+   -->
+  <script>
+    // 表示HTML页面加载完毕后, 做什么
+    window.onload = function () {
+      // 所有的javascript代码编写在这里
+    }
+  </script>
+</head>
+
+<body>
+  <!-- 将<script>元素放置在相关HTML元素的后面, 或者<body>元素内的最后 -->
+  <script></script>
+</body>
+
+</html>

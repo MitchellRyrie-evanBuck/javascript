@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取目标元素</title>
+</head>
+
+<body>
+  <ul>
+    <li id="link" style="background-color: lightskyblue;"><a href="#">链接</a></li>
+  </ul>
+  <script>
+    var liElement = document.getElementById('link')
+    // 为父级元素绑定事件, 在后代元素中同样适用
+    liElement.onclick = function (event) {
+      /*
+       * target属性: 触发当前事件的目标元素
+       * currentTarget属性: 绑定当前事件的目标元素
+       * this: 与currentTarget属性一致
+       */
+      console.log(event.target, event.currentTarget, this)
+    }
+  </script>
+</body>
+
+</html>

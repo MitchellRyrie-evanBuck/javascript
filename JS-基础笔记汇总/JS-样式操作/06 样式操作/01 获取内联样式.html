@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取内联样式</title>
+</head>
+
+<body>
+  <p id="p1" style="color: lightcoral;font-weight: bolder">这是一个段落内容.</p>
+  <script>
+    var pElem = document.getElementById('p1');
+    // 1. 通过getAttribute()方法获取style属性的值: 结果是字符串
+    var style = pElem.getAttribute('style');
+    // 如果得到具体的样式名称和样式值: 通过字符串的解析来得到
+    var stylesArr = style.split(';')
+    for (var i = 0; i < stylesArr.length; i++) {
+      var styleArr = stylesArr[i].split(':')
+      var styleName = styleArr[0]
+      var styleValue = styleArr[1]
+      console.log(styleName, styleValue)
+    }
+    // 2. 通过HTMLElement对象的style属性: 结果是CSSStyleDeclaration对象
+    var style = pElem.style
+    console.log(style.length)
+    console.log(style[style[0]], style[style[1]])
+  </script>
+
+</body>
+
+</html>

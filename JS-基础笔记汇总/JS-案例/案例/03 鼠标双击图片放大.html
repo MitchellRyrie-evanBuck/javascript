@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鼠标双击图片放大</title>
+  <style>
+    .default {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .default {
+      cursor: pointer;
+    }
+
+    .default img {
+      display: block;
+      width: 300px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px 5px #d9d9d9;
+
+      transition: all .5s;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="default">
+    <img src="imgs/girl.jpg">
+  </div>
+  <script>
+    var defaultElement = document.getElementsByClassName('default')[0]
+    var imgElement = defaultElement.firstElementChild
+
+    var num = 0
+    defaultElement.addEventListener('dblclick', function () {
+      num++
+      if (num % 2 === 1) {
+        imgElement.style.transform = 'scale(3)'
+      } else {
+        imgElement.style.transform = 'scale(1)'
+      }
+    })
+  </script>
+</body>
+
+</html>

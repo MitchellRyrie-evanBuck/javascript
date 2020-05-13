@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>永远点不到的方块</title>
+  <style>
+    body {
+      overflow: hidden;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: lightsalmon;
+      text-align: center;
+      line-height: 100px;
+      color: #333;
+      font-size: 14px;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">来点我啊...</div>
+  <script>
+    var box = document.getElementsByClassName('box')[0]
+    // 1.获取到当前浏览器窗口的宽度值和高度值
+    const WIDTH = parseFloat(window.innerWidth)
+    const HEIGHT = parseFloat(window.innerHeight)
+    // 2.获取到<div>元素的宽度值和高度值
+    const divStyle = window.getComputedStyle(box)
+    const divWidth = parseFloat(divStyle.width)
+    const divHeight = parseFloat(divStyle.height)
+    // 计算宽度和高度的最大值
+    const maxWidth = WIDTH - divWidth
+    const maxHeight = HEIGHT - divHeight
+    // 3.为<div>元素注册click事件
+    box.addEventListener('mouseover', function (event) {
+      // a.随机水平和垂直方向的坐标值
+      var left = Math.random() * maxWidth
+      var top = Math.random() * maxHeight
+      // b.将随机生成的坐标值设置给<div>元素
+      box.style.left = left + 'px'
+      box.style.top = top + 'px'
+    })
+  </script>
+</body>
+
+</html>

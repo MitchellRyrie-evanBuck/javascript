@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鼠标经典事件</title>
+  <style>
+    body {
+      overflow: hidden;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: lightsalmon;
+      text-align: center;
+      line-height: 100px;
+      color: #333;
+      font-size: 14px;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">来点我啊...</div>
+  <script>
+    var body = document.body
+    body.style.height = window.innerHeight + 'px'
+
+    var box = document.getElementsByClassName('box')[0]
+    // mouseover事件: 鼠标悬停
+    box.addEventListener('mouseover', function () {
+      box.textContent = '在我上面啦...'
+    })
+    // mouseout事件: 鼠标离开
+    box.addEventListener('mouseout', function () {
+      box.textContent = '来点我啊...'
+    })
+
+    var flag = false
+    // mousedown事件: 鼠标按键被按下(没有释放)
+    box.addEventListener('mousedown', function () {
+      box.textContent = '你选中了我...'
+      flag = true
+    })
+    // mousemove事件: 鼠标跟随事件(重复触发)
+    body.addEventListener('mousemove', function (event) {
+      if (flag) {
+        box.style.left = event.pageX + 'px'
+        box.style.top = event.pageY + 'px'
+      }
+    })
+    // mouseup事件: 鼠标按键被抬起(释放)
+    box.addEventListener('mouseup', function (event) {
+      box.style.left = event.pageX + 'px'
+      box.style.top = event.pageY + 'px'
+
+      flag = false
+    })
+  </script>
+</body>
+
+</html>

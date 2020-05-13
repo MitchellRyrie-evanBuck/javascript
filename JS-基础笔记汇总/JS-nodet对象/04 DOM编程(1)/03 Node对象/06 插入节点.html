@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>插入节点</title>
+</head>
+
+<body>
+  <div id="parent">
+    <div id="box1">box1</div>
+    <div id="box2">box2</div>
+    <div id="box3">box3</div>
+  </div>
+  <script>
+    var parentElement = document.getElementById('parent')
+
+    // var divElement = document.createElement('div')
+    // divElement.textContent = 'box4'
+
+    // parentElement.appendChild(divElement)
+
+    var box2 = document.getElementById('box2')
+    // parentElement.insertBefore(divElement, box2)
+
+    console.log(document.getElementById('box3').nextSibling.nextSibling)
+
+    // Node对象没有提供insertAfter()方法
+    function insertAfter(parentNode, targetNode, newNode) {
+      var nextNode = targetNode.nextSibling.nextSibling
+      if (nextNode === null) {
+        // 说明目标节点是最后一个子节点
+        parentNode.appendChild(newNode)
+      } else {
+        // 说明目标节点不是最后一个子节点
+        parentNode.insertBefore(newNode, nextNode)
+      }
+    }
+  </script>
+</body>
+
+</html>

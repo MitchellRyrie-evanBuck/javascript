@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>键盘组合键</title>
+  <style>
+    .shortcuts {
+      width: 240px;
+      height: 80px;
+      background-color: rgba(0, 0, 0, .5);
+      border-radius: 10px;
+      font-size: 24px;
+      font-weight: 800;
+      text-align: center;
+      line-height: 80px;
+      color: #fff;
+      position: fixed;
+      left: 50%;
+      bottom: 10px;
+      transform: translateX(-50%);
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="shortcuts"></div>
+  <script>
+    /*
+     如何判断用户现在使用的键盘的组合键
+     核心: 怎么能知道当用户按下第二/三个按键时, 第一个没有释放
+     实现步骤:
+     1. keydown事件: 获取到用户按下的按键信息
+     2. keyup事件: 判断是否释放的是之前按下的按键信息
+     注意: 需要在两个事件的处理函数中共享按键信息(多个)
+     */
+    var divElement = document.getElementsByClassName('shortcuts')[0]
+    // 定义一个数组存储用户按下的按键信息
+    var keyArr = []
+    var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+      'u', 'v', 'w', 'x', 'y', 'z'
+    ]
+    // keydown事件: 在用户按下键盘按键时触发. 该事件是无法知道用户是否释放了该按键
+    document.addEventListener('keydown', function (event) {
+      var key = event.key
+      key = letters.indexOf(key) !== -1 ? key.toUpperCase() : key
+      // 将用户按下的按键信息添加到数组中
+      if (key !== keyArr[keyArr.length - 1] || keyArr.length === 0) {
+        keyArr.push(key)
+      }
+      // 将组合键的信息显示到HTML页面中
+      switch (keyArr.length) {
+        case 2:
+          divElement.textContent = keyArr[0] + ' + ' + keyArr[1]
+          divElement.style.opacity = 1
+          break
+        case 3:
+          divElement.textContent = keyArr[0] + ' + ' + keyArr[1] + ' + ' + keyArr[2]
+          divElement.style.opacity = 1
+          break
+      }
+    })
+    // keyup事件: 在用户释放键盘按键时触发.
+    document.addEventListener('keyup', function (event) {
+      var key = event.key
+      key = letters.indexOf(key) !== -1 ? key.toUpperCase() : key
+      /*
+       释放键盘的情况:
+       1.按下control或b键, 同时释放该按键 -> 从数组中删除
+       2.(预期效果)按下control键和b键, 完成组合键的功能之后进行释放 -> 从数组删除
+       3.按下control键和b键, 完成组合键的功能之后进行释放其中某个按键 -> 从数组删除
+       */
+      // for (var i = 0; i < keyArr.length; i++) {
+      //   if (key === keyArr[i]) {
+      //     keyArr.splice(i, 1)
+      //   }
+      // }
+      var index = keyArr.indexOf(key)
+      if (index !== -1) {
+        keyArr.splice(index, 1)
+      }
+      // 将组合键信息从HTML页面中删除
+      divElement.textContent = ''
+      divElement.style.opacity = 0
+    })
+  </script>
+</body>
+
+</html>

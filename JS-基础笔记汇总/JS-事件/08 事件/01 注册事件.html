@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注册事件</title>
+</head>
+
+<body>
+  <!-- 
+    1.通过HTML元素的事件属性
+      格式: 事件名称="函数名"
+      问题: HTML结构与行为没有有效分离
+   -->
+  <button id="btn1" onclick="fn()">按钮</button>
+  <button id="btn2">按钮</button>
+  <button id="btn3">按钮</button>
+  <script>
+    function fn() {
+      console.log('你终于点击了我...')
+    }
+
+    // 2.DOM中相关对象提供的事件属性
+    var btn2 = document.getElementById('btn2')
+
+    // btn2.onclick = function () {
+    //   console.log('你终于点击了我...')
+    // }
+
+    // 如果为某个事件指定的处理函数是已定义好的话, 只写函数名(不能有小括号)
+    btn2.onclick = fn
+
+    // DOM中的事件属性与事件监听器的区别在于: 是否设置是否为事件冒泡
+
+    // 3.为指定的目标元素添加事件监听器
+    var btn3 = document.getElementById('btn3')
+    btn3.addEventListener('click', fn)
+  </script>
+</body>
+
+</html>

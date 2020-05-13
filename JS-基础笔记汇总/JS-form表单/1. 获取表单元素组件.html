@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" class="myform" id="login" name="myform">
+        姓名<input type="text" id="username" name="username"><br>
+        密码<input type="password" id="password" name="password">
+        <input type="submit">
+    </form>
+
+    <script>
+        let myform = document.forms[0]
+        let formElement = myform.elements
+        console.log(formElement)
+    </script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>键盘控制方块</title>
+  <style>
+    .container {
+      width: 600px;
+      height: 500px;
+      border: 1px solid #000;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: lightsalmon;
+
+      position: absolute;
+      left: 50px;
+      top: 40%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box"></div>
+  </div>
+  <script>
+    var container = document.getElementsByClassName('container')[0]
+    var containerStyle = window.getComputedStyle(container)
+    var containerWidth = parseFloat(containerStyle.width)
+    var containerHeight = parseFloat(containerStyle.height)
+
+    var box = document.getElementsByClassName('box')[0]
+    var boxStyle = window.getComputedStyle(box)
+    var boxWidth = parseFloat(boxStyle.width)
+    var boxHeight = parseFloat(boxStyle.height)
+    // 计算出四个方向的边界值
+    const minLeft = 0,
+      minTop = 0,
+      maxLeft = containerWidth - boxWidth,
+      maxTop = containerHeight - boxHeight
+    // 键盘上的上、下、左和右键, 绑定keydown和keyup事件是可以的
+    document.addEventListener('keydown', function (event) {
+      // 获取方块当前的有效样式
+      var style = window.getComputedStyle(box)
+      var boxLeft = parseFloat(style.left)
+      var boxTop = parseFloat(style.top)
+      /* 
+       通过event事件对象可以得到键盘按键信息的属性:
+       * code属性: 前缀 + 键盘信息
+       * key属性: 键盘信息
+       * keyCode属性: 键盘的Unicode信息
+       * which属性: 键盘的Unicode信息
+       */
+      switch (event.key) {
+        case 'ArrowUp': // 上
+          if ((boxTop - 10) > minTop) {
+            boxTop -= 10
+          } else if ((boxTop - 10) <= minTop && (boxTop - 10) > -10) {
+            boxTop -= boxTop
+          }
+          break
+        case 'ArrowDown': // 下
+          if ((boxTop + 10) < maxTop) {
+            boxTop += 10
+          } else if ((boxTop + 10) >= maxTop && boxTop < maxTop) {
+            boxTop += maxTop - boxTop
+          }
+          break
+        case 'ArrowLeft': // 左
+          if ((boxLeft - 10) > minLeft) {
+            boxLeft -= 10
+          } else if ((boxLeft - 10) <= minLeft && (boxLeft - 10) > -10) {
+            boxLeft -= boxLeft
+          }
+          break
+        case 'ArrowRight': // 右
+          if ((boxLeft + 10) < maxLeft) {
+            boxLeft += 10
+          } else if ((boxLeft + 10) >= maxLeft && boxLeft < maxLeft) {
+            boxLeft += maxLeft - boxLeft
+          }
+          break
+      }
+      // 更新HTML页面
+      box.style.top = boxTop + 'px'
+      box.style.left = boxLeft + 'px'
+    })
+  </script>
+</body>
+
+</html>

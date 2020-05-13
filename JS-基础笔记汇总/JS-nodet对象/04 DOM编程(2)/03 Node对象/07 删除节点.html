@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>删除节点</title>
+</head>
+
+<body>
+  <ul id="city">
+    <li id="beijing">北京</li>
+    <li id="shanghai">上海</li>
+    <li id="tianjin">天津</li>
+  </ul>
+  <script>
+    var parentElement = document.getElementById('city')
+    // 如果将定位HTML页面中的元素保存到某个变量中 -> DOM缓存
+    var beijing = document.getElementById('beijing')
+    // 删除节点
+    parentElement.removeChild(beijing)
+    // 从逻辑上来说, 变量中存储对应的节点信息
+    console.log(beijing)
+    parentElement.appendChild(beijing)
+  </script>
+</body>
+
+</html>

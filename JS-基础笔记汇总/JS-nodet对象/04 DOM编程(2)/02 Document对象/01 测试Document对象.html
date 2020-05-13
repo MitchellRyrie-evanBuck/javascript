@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document对象</title>
+</head>
+
+<body>
+  <script>
+    /*
+       document对象: 在DOM中代表了HTML页面
+       document对象是作为DOM解析HTML页面的入口
+     */
+    console.log(document)
+    /*
+      Document是类型/接口 -> 其实就是一个构造函数
+      * 创建对象 -> 创建一个Document对象
+      * DOM本身已经提供了document对象
+     */
+    console.log(new Document())
+    // Document对象提供的属性和方法在原型上
+    console.log(Document.prototype)
+  </script>
+</body>
+
+</html>

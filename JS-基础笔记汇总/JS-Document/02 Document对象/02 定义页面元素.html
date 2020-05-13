@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定义页面元素</title>
+</head>
+
+<body>
+  <p id="p1" name="pElement" class="pElement">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam a iure
+    corporis animi
+    dolore unde sit
+    earum, iste optio mollitia, vero consectetur dicta deserunt labore iusto nulla provident, rem dolorem.</p>
+  <p id="p2" name="pElement" class="pElement">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ipsam
+    maiores laborum
+    officiis corporis iusto culpa fugit ex laboriosam, dignissimos accusamus fuga error neque tempora nemo odit libero
+    expedita placeat.</p>
+  <script>
+      /*
+        getElementById()方法的返回类型: 
+        * Node类型: 表示可以使用Node的属性和方法
+        * Element类型: 表示可以使用Element的属性和方法
+      */
+      var p1Element = document.getElementById('p1')
+      // 通过document对象定位页面时, 可能定位失败(没有查找到指定元素) -> 结果为null
+      if (p1Element !== null) {
+        console.log(p1Element instanceof Node) // Node
+        console.log(p1Element instanceof Element) // Element
+      } else {
+        console.log('未定位到指定元素...')
+      }
+      /*
+        getElementsByName()方法的返回类型: 
+        * NodeList: 表示为节点集合, 可以存储多个值, 但是不是一个数组
+      */
+      var pElements = document.getElementsByName('pElement')
+      console.log(pElements)
+      console.log(pElements instanceof Array) // false
+
+
+      // 遍历NodeList集合
+      for (var i = 0; i < pElements.length; i++) {
+        // 具体元素既是Node类型也是Element类型
+        console.log(pElements[i])
+      }
+      // getElementsByClassName()方法的返回类型: HTMLCollection
+      var classElements = document.getElementsByClassName('pElements')
+      console.log(classElements)
+      // getElementsByTagName()方法的返回类型: HTMLCollection
+      var pElements2 = document.getElementsByTagName('p')
+      console.log(pElements2)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>双击放大轮播图</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .article-wapper {
+      width: 694px;
+      overflow: hidden;
+      font-family: PingFang SC, Lantinghei SC, Helvetica Neue, Helvetica, Arial, Microsoft YaHei, 微软雅黑, STHeitiSC-Light, simsun, 宋体, WenQuanYi Zen Hei, WenQuanYi Micro Hei, "sans-serif";
+      word-break: break-word;
+      margin: 50px auto;
+    }
+
+    .article-wapper h1 {
+      font-size: 30px;
+      color: #262626;
+      letter-spacing: 0;
+      text-align: justify;
+      line-height: 42px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .article-wapper .content {
+      font-size: 16px;
+      color: #262626;
+      letter-spacing: 0;
+      text-align: justify;
+      line-height: 30px;
+    }
+
+    .article-wapper .content p {
+      margin-bottom: 26px;
+      word-wrap: break-word;
+    }
+
+    .article-wapper .content p a {
+      text-decoration: none;
+      color: #262626;
+      border: solid #999;
+      border-width: 0 0 1px;
+      padding: 0 0 1px;
+      word-wrap: break-word;
+    }
+
+    .article-wapper .content p img {
+      max-width: 690px;
+      display: block;
+      border-radius: 5px;
+      margin: 30px auto;
+      cursor: pointer;
+    }
+
+    .article-wapper .content h2 {
+      font-weight: 600;
+      margin: 30px 0 14px;
+      font-size: 20px;
+      line-height: 28px;
+      position: relative;
+      color: #4285f4;
+    }
+
+    .image-slide {
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, .8);
+      display: none;
+    }
+
+    .image-slide .image-list,
+    .image-slide .slide-controls {
+      width: 80%;
+      height: 80%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .image-slide .image-list img {
+      width: 850px;
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      opacity: 0;
+      z-index: 0;
+
+      transition: all 1s;
+    }
+
+    .image-slide .slide-controls .slide-left,
+    .image-slide .slide-controls .slide-right {
+      width: 41px;
+      height: 69px;
+
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      background-image: url(imgs/icon-slides.png);
+      cursor: pointer;
+
+      z-index: 2;
+    }
+
+    .image-slide .slide-controls .slide-left {
+      left: 0;
+      background-position: -84px 0;
+    }
+
+    .image-slide .slide-controls .slide-left:hover {
+      background-position: 0 0;
+    }
+
+    .image-slide .slide-controls .slide-right {
+      right: 0;
+      background-position: -124px 0;
+    }
+
+    .image-slide .slide-controls .slide-right:hover {
+      background-position: -42px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="article-wapper">
+    <h1>究竟是谁制造了“瑞幸”之殇？</h1>
+    <div class="content">
+      <p>编者按：本文来自微信公众号<a
+          href="https://mp.weixin.qq.com/s/yoRSqdXpk4JA-2_Zg0ojig">“品牌几何”（ID:brand-vista）</a>，作者：李刚健，36氪经授权发布。</p>
+      <p>几何君有话说：</p>
+      <p>这段时间，瑞幸掀起了不小的风波。当它站在风口浪尖之时，周围不断发出了各种不同的声音。今天几何君分享一篇李刚健老师的文章，究竟是谁制造了瑞幸之殇呢？</p>
+      <h2 label="一级标题">01.&nbsp;<span style="letter-spacing: 0px;">美国最具创新精神公司</span></h2>
+      <p>曾有一家世界上最大的能源公司，连续六年被《财富》杂志评选为“美国最具创新精神公司”，2000年披露的营业额达1010亿美元之巨，拥有约21000名雇员，这家公司叫安然。</p>
+      <p>
+        2001年年初，一家有着良好声誉的投资机构老板吉姆·切欧斯公开对安然的盈利模式表示了怀疑。他指出，虽然安然的业务看起来很辉煌，但实际上赚不到什么钱，也没有人能够说清安然是怎么赚钱的。10月22日，美国证券交易委员会要求公司自动提交某些交易的细节内容。并最终于10月31日开始对安然及其合伙公司进行正式调查。11月8日，安然被迫承认做了假账，虚报数字让人瞠目结舌：自1997年以来，安然虚报盈利共计近6亿美元。11月30日，安然股价跌至0．26美元，市值由峰值时的800亿美元跌至2亿美元。
+      </p>
+      <p>12月2日，安然正式向破产法院申请破产保护，破产清单中所列资产高达498亿美元，成为美国历史上最大的破产企业。</p>
+      <p>
+        <img src="https://img.36krcdn.com/20200427/v2_be0d7fc527eb41b5ac7f88a35ae6d9a0_img_000"
+          data-img-size-val="1080,730">
+      </p>
+      <h2 label="一级标题">02.&nbsp;<span style="letter-spacing: 0px;">元气满满的瑞幸？</span></h2>
+      <p>将近20年以后，有一家中国的咖啡连锁新贵，亏着钱做着生意，也在美国上了市，号称是中国咖啡业的领军品牌，这个公司叫瑞幸。</p>
+      <p>
+        也是年初，卡森·布洛克组织了92名全职和1418名兼职调查员，在全国45个城市2213家瑞幸门店，收集了25000多张小票，进行了10000个小时的门店录像，发布了瑞幸的做空报告。随后，瑞幸发布公告坚决否认报告中的所有指控，认为该报告的论证方式存在缺陷，报告中包含的所谓证据无确凿事实依据，且报告中的指控均基于毫无根据的推测和对事件的恶意解释。
+      </p>
+      <p>直到愚人节后的第一天，安永不敢在年报上签字，瑞幸才不得不自曝，并且迅速找了一个背锅侠。尽管随之股价大跌，瑞幸自己却觉得“元气满满”。</p>
+      <p>之后的口诛笔伐尽管铺天盖地，然而4月3日瑞幸的店门口居然排起了长队，据说是怕优惠券来不及用完的群众。之后经过几周的冷清，4月14号，有记者宣称上海门店挺过寒冬，订单恢复正常。</p>
+      <p>
+        <img src="https://img.36krcdn.com/20200427/v2_1d93ac5c10184d178dcb0b3305c11386_img_000"
+          data-img-size-val="1080,734">
+      </p>
+      <h2 label="一级标题">03.&nbsp;<span style="letter-spacing: 0px;">瑞幸算是一个品牌吗？</span></h2>
+      <p>
+        看上去，尽管从出生之始就一直有人唱衰瑞幸，可是凭着对媒介公关的高明操控，瑞幸每次都能度过难关。也许老陆早就明白一个道理：你们能花多少成本和时间再找那么多人来收集新的证据呢？做空者该赚的也赚完了，我依然还可以讲故事，可以利用消费者的劣根性做游戏。
+      </p>
+      <p>
+        有人问瑞幸算是一个品牌吗？有人说不是，它只是一门生意；也有人说它连生意都不是，只是资本游戏的一个载体。我比较倾向于最后一种理解。说老陆在做游戏，就像是营造了一个他的《西部世界》：真正的目的不是产品本身，而是消费者数据。随着技术的发展，消费者数据就是消费者心智——我可以比你更了解你，"你是真的吗？""如果你分辨不出来，那还重要吗？"。
+      </p>
+      <p>
+        福特用机器人收集数据，老陆用咖啡收集数据（实际上也可以用别的，只不过恰好用咖啡编了点故事，尽管蹩脚，但是中国有智商税，大家都懂的）。老陆把咖啡卖给了普通消费者，把数据作为价值核心通过各种金融手段（公开上市，质押等等）卖给了普通投资者，完美的闭环。本来，两者就是同一群人，而老陆的NB之处在于通过地域使他们没有重合：亏了国外投资者（幸好大部分国内投资者不买美股），让国内消费者赚了便宜。因为老陆知道，这样的分割舆论上更好操控。
+      </p>
+      <p>然而，我们在快意的指责瑞幸的管理团队和那帮无良的保荐承销机构（他们都是精英中的精英）的同时，有没有想过作为一个普通消费者，我们每个人自己的责任吗？</p>
+      <p>
+        <img src="https://img.36krcdn.com/20200427/v2_3851c681585849499fc0e3e4268c61b9_img_000"
+          data-img-size-val="1080,766">
+      </p>
+      <p>
+        很多很多年以前，那时我还很年轻，还没有家庭和孩子，任职于一家国际著名的品牌咨询公司。适逢公司旅游，两岸三地的同事共赴普吉岛，享受阳光和沙滩。一位业界德高望重的前辈曾经质问过我：你们穿着那些昂贵的品牌服装，真的觉得适合你们自己本人的气质和价值观吗？因为很多人看起来穿着特别不协调，不是身材尺寸的原因。
+      </p>
+      <p>
+        答案大家也都很清楚：因为那些品牌的价格能体现身份。是的，那时的我们以为价格=身份感，我们却不知道价格背后的品牌态度和价值观才是更深层次的原因，我们搞错了因果关系。也正是我所在的这家公司，因为对转基因产业的反对态度，拒绝了当时和孟山都合作的机会。
+      </p>
+      <p>
+        当下整个中国的消费群体都被“成功学”和“占便宜”的商业逻辑左右，都觉得只有成功才是判断真理的唯一标准，而性价比永远是吸引流量的利器。几乎所有品类的东西都越来越便宜，真正赚钱的只有平台和中介（基本处于垄断的状态），使得几乎所有的生产者（最终也是消费者）都面临苦难的境地（这对中国经济的长期负面因素并不是我能关心和解决的）。
+      </p>
+      <p>
+        <img src="https://img.36krcdn.com/20200427/v2_fc67a520b6a64627ba466a1f4465a876_img_000"
+          data-img-size-val="777,423">
+      </p>
+      <p>
+        归根到底，因为我们是这样的消费逻辑：只要商家给我好处，个人数据并不值钱，反正我也不是什么大人物，数据被人拿去最多被骚扰一下，又能怎样呢？我们绝不会因为不喜欢一个品牌，有便宜也不去占，有羊毛不薅是傻子。因此，不断有瑞幸这样的商业模式出现：给你便宜，拿你数据，然后用你的数据编故事（用户运营）说给各级市场的投资者，各怀利益，总有人接棒，最终套现走人，实现一个资本游戏闭环。
+      </p>
+      <p>
+        在这样的情况下，品牌也就完全不需要营造什么价值观（那些泛泛的讲创造美好生活之类的都是空谈，并没有价值观），消费者也不需要认同。这事儿就像皇帝的新衣，人人知道答案，但还是不断发生。至于造假，那都是战术。瑞幸算是倒霉，线下能找到证据，很多线上流量编故事的数据根本无法考证。
+      </p>
+      <p>等到哪一天我徜徉在线上线下的世界里，面对所有的打折一无所动，不再关心什么6.18和双11，只在需要的时候买价值观被自己认同的品牌（当然首先它的产品是可靠的），还会有瑞幸这样的商业模式出现吗？</p>
+      <p>因为品牌有不同的价值观，所以会有不同的溢价。我们愿意因为价值观多付合理的费用吗？</p>
+      <p>*图片来源：网络</p>
+    </div>
+  </div>
+  <!-- 放大的轮播图 -->
+  <div class="image-slide">
+    <!-- 图片列表 -->
+    <div class="image-list"></div>
+    <!-- 左右切换 -->
+    <div class="slide-controls">
+      <div class="slide-left"></div>
+      <div class="slide-right"></div>
+    </div>
+  </div>
+  <script>
+    // 0.将文章中所有的图片插入到放大后的轮播图中
+    // 0.1 获取到文章中所有的图片
+    var contentElement = document.getElementsByClassName('content')[0]
+    var imageElements = contentElement.getElementsByTagName('img')
+    // 0.2 将获取到的文章中所有的图片集合转换为数组
+    var imageArr = []
+    // 0.3 获取放大的轮播图的图片容器
+    var slideElement = document.getElementsByClassName('image-slide')[0]
+    var listElement = slideElement.getElementsByClassName('image-list')[0]
+    var slideImageElements = listElement.getElementsByTagName('img')
+    // 0.4 将文章中所有的图片插入到轮播图中
+    for (var i = 0; i < imageElements.length; i++) {
+      // 获取每张图片的文件路径
+      var imageElement = imageElements[i]
+      var imageLink = imageElement.getAttribute('src')
+      // 使用图片文件的链接创建新的图片元素
+      var newImageElement = document.createElement('img')
+      newImageElement.setAttribute('src', imageLink)
+      // 将创建的新图片元素添加到图片容器中
+      listElement.appendChild(newImageElement)
+
+      // 将每个图片元素添加到自定义的数组中
+      imageArr.push(imageElement)
+    }
+
+    // 定义用来记录放大轮播图的索引值
+    var slideNum = 0,
+      prev = 0
+    // 获取当前索引值的最大值
+    var length = slideImageElements.length - 1
+    // 获取<body>元素
+    var bodyElement = document.body
+
+    // 1.文章中所有图片的双击放大效果
+    // 为所有图片绑定dblclick事件 -> 处理函数: 将图片放大
+    contentElement.addEventListener('dblclick', function (event) {
+      var targetElement = event.target
+      if (targetElement.nodeName === 'IMG') {
+        // 显示放大的轮播图
+        slideElement.style.display = 'block'
+        // 在轮播图中显示对应的图片
+        slideNum = imageArr.indexOf(targetElement)
+
+        slideImageElements[slideNum].style.opacity = 1
+        slideImageElements[slideNum].style.zIndex = 1
+        // 轮播图显示之后, 页面是不能滚动
+        bodyElement.style.overflow = 'hidden'
+      }
+    })
+    // 2.双击轮播图容器时, 关闭轮播图
+    slideElement.addEventListener('dblclick', function () {
+      // 隐藏放大的轮播图
+      slideElement.style.display = 'none'
+      // 将之前轮播图中显示的图片恢复为隐藏
+      slideImageElements[slideNum].style.opacity = 0
+      slideImageElements[slideNum].style.zIndex = 0
+      // 轮播图隐藏之后, 页面恢复为滚动
+      bodyElement.style.overflow = 'auto'
+    })
+    // 3.放大效果中存在轮播图的动态效果
+    // 获取左右切换的按钮
+    var slideControl = slideElement.getElementsByClassName('slide-controls')[0]
+    var slideLeft = slideControl.getElementsByClassName('slide-left')[0]
+    var slideRight = slideControl.getElementsByClassName('slide-right')[0]
+
+    slideRight.addEventListener('click', function () {
+      if (slideNum < length) {
+        slideNum++
+        prev = slideNum - 1
+      } else if (slideNum === length) {
+        slideNum = 0
+        prev = length
+      }
+      
+      slideImageElements[slideNum].style.opacity = 1
+      slideImageElements[slideNum].style.zIndex = 1
+
+      slideImageElements[prev].style.opacity = 0
+      slideImageElements[prev].style.zIndex = 0
+    })
+
+    slideLeft.addEventListener('click', function () {
+      if (slideNum > 0) {
+        slideNum--
+        prev = slideNum + 1
+      } else if (slideNum === 0) {
+        slideNum = length
+        prev = 0
+      }
+      slideImageElements[slideNum].style.opacity = 1
+      slideImageElements[slideNum].style.zIndex = 1
+
+      slideImageElements[prev].style.opacity = 0
+      slideImageElements[prev].style.zIndex = 0
+    })
+  </script>
+</body>
+
+</html>

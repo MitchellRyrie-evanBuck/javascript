@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节点创建</title>
+</head>
+<body>
+    <div id="boss" class="top">111111</div>
+
+    <script type="text/javascript">
+        /*获取div父级id*/
+        var get =document.getElementById("boss");
+        /*创建新节点*/
+        var new_node =document.createElement("div");
+        /*再div中创建文本节点*/
+        var new_text=document.createTextNode("2222222222")
+        /*创建属性节点*/
+        var new_att=document.createAttribute("id")
+        /*设置属性节点的值*/
+        new_att.nodeValue="son"
+
+        /*讲属性节点添加到元素节点*/
+        new_node.setAttributeNode(new_att)
+        /*讲文本节点添加到指定div元素节*/
+        new_node.appendChild(new_text)
+        /*将创建的新节点加入到父级boss节点中*/
+        get.appendChild(new_node)
+        console.log(get,new_node)
+    </script>    
+
+    <script>
+        // 获取div节点
+        var top1 = document.getElementById("boss")
+        // 创建新节点
+        var new_top = document.createElement("p")
+        // 创建文本节点
+        var new_text = document.createTextNode("giao")
+        // 创建属性节点
+        var shuxing = document.createAttribute("class")
+        shuxing.nodeValue = "top1"
+        
+        // 将属性节点添加到元素节点
+        new_top.setAttributeNode(shuxing)
+        // 将文本节点加入
+        new_top.appendChild(new_text)
+        top1.appendChild(new_top)
+        // console.log(top1,new_top)
+
+    </script>
+</body>
+</html>

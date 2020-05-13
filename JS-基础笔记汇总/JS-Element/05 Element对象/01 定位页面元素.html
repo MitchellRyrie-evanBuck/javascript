@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定位页面元素</title>
+</head>
+
+<body>
+  <div class="container">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <script>
+    // 既是Node对象也是Element对象
+    var parentElement = document.getElementsByClassName('container')[0]
+    console.log(parentElement)
+    // 调用了Element对象的getElementsByTagName()方法
+    var divElements = parentElement.getElementsByTagName('div')
+    console.log(divElements)
+  </script>
+</body>
+
+</html>

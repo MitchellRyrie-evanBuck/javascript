@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>遍历节点</title>
+</head>
+
+<body>
+  <div id="parent">
+    <div id="box1">box1</div>
+    <div id="box2">box2</div>
+    <div id="box3">box3</div>
+  </div>
+  <script>
+    // 获取父节点 - parentNode
+    var box2 = document.getElementById('box2')
+    var parentNode = box2.parentNode
+    console.log(parentNode)
+    // 获取父元素节点 - parentElement
+    var parentElement = box2.parentElement
+    console.log(parentElement)
+    // 常规HTML元素解析时, parentNode = parentElement
+
+    var htmlElement = document.documentElement
+    // <html>元素的父节点是document对象
+    console.log(htmlElement.parentNode, htmlElement.parentElement)
+  </script>
+</body>
+
+</html>

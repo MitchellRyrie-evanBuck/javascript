@@ -1,0 +1,76 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>页面鼠标右键菜单</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    #menu {
+      list-style: none;
+      margin: 0;
+      padding: 10px;
+      width: 100px;
+      height: 202px;
+      border: 1px solid #d9d9d9;
+      border-radius: 2px;
+
+      position: absolute;
+
+      display: none;
+    }
+
+    #menu li {
+      height: 30px;
+      font-size: 12px;
+      color: rgba(0, 0, 0, .5);
+      line-height: 30px;
+      cursor: pointer;
+    }
+
+    #menu li:nth-of-type(5) {
+      border-top: 1px solid #d9d9d9;
+      border-bottom: 1px solid #d9d9d9;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="menu">
+    <li>剪切</li>
+    <li>复制</li>
+    <li>粘贴</li>
+    <li>段落格式</li>
+    <li>批注</li>
+    <li>插入链接</li>
+  </ul>
+  <script>
+    var menu = document.getElementById('menu')
+    console.log(window)
+    // 1.禁止浏览器窗口提供的默认右键菜单
+    document.addEventListener('contextmenu', function (event) {
+      event.preventDefault()
+    })
+    document.addEventListener('mousedown', function (event) {
+      /*
+        event事件对象的button属性: 获取鼠标的具体按键(左键、滚轮或右键)
+        * 如果值为0, 表示为左键
+        * 如果值为1, 表示为滚轮
+        * 如果值为2, 表示为右键
+       */
+      if (event.button === 2) {
+        menu.style.left = event.clientX + 'px'
+        menu.style.top = event.clientY + 'px'
+        menu.style.display = 'block'
+      } else if (event.button === 0) {
+        menu.style.display = 'none'
+      }
+    })
+  </script>
+</body>
+
+</html>

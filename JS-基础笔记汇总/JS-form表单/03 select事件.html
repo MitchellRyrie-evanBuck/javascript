@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>select事件</title>
+</head>
+
+<body>
+  <input type="text" id="text" value="这是一个用来测试的文本内容.">
+  <script>
+    var text = document.getElementById('text')
+    var value = text.value
+    text.addEventListener('select', function () {
+      /*
+       * 如果是通过调用select()方法选择文本内容 -> 全选 -> 通过value属性获取
+       * 如果是用户选择文本内容 -> 不知道用户选择的文本是什么
+         HTMLInputElement对象和HTMLTextAreaElement对象:
+         1.selectionStart: 表示选择文本的开始索引值
+         2.selectionEnd: 表示选择文本的结束索引值
+       */
+      var result = value.slice(text.selectionStart, text.selectionEnd)
+      console.log(result)
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>定义页面元素</title>
+</head>
+
+<body>
+  <p id="p1" name="pElement" class="pElement">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ullam a iure
+    corporis animi
+    dolore unde sit
+    earum, iste optio mollitia, vero consectetur dicta deserunt labore iusto nulla provident, rem dolorem.</p>
+  <p id="p2" name="pElement" class="pElement">Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis ipsam
+    maiores laborum
+    officiis corporis iusto culpa fugit ex laboriosam, dignissimos accusamus fuga error neque tempora nemo odit libero
+    expedita placeat.</p>
+  <script>
+    // querySelector()方法: 返回第一匹配的元素
+    var selector1 = document.querySelector('.pElement')
+    console.log(selector1)
+    // querySelectorAll()方法: 返回所有匹配的元素(NodeList集合)
+    var selector2 = document.querySelectorAll('.pElement')
+    console.log(selector2)
+  </script>
+</body>
+
+</html>

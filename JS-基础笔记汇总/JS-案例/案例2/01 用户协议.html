@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用户协议</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow: hidden;
+    }
+
+    .dialog {
+      width: 1000px;
+      height: 700px;
+      border: 5px solid rgba(0, 0, 0, .1);
+      margin: 10px auto;
+    }
+
+    .dialog .title {
+      color: #000;
+      font-weight: 700;
+      padding: 0 10px;
+      height: 30px;
+      line-height: 30px;
+      background: #f3f3f3;
+      font-size: 14px;
+      font-family: "Microsoft YaHei";
+    }
+
+    .dialog .content-box {
+      height: 660px;
+      width: 990px;
+      padding: 10px;
+    }
+
+    .dialog .content-box .content {
+      height: 550px;
+      padding: 10px;
+      line-height: 20px;
+      background: #f3f3f3;
+      overflow-x: hidden;
+      overflow-y: auto;
+      margin-bottom: 30px;
+    }
+
+    .dialog .content-box .button-box {
+      text-align: center;
+    }
+
+    .dialog .content-box .button-box button {
+      display: inline-block;
+      width: 400px;
+      vertical-align: middle;
+      height: 54px;
+      color: #fff;
+      background: #e22;
+      border: 0;
+      font-size: 16px;
+      font-family: "Microsoft YaHei", "Hiragino Sans GB";
+      cursor: pointer;
+    }
+
+    .dialog .content-box .button-box button:disabled {
+      background: #d9d9d9;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="dialog">
+    <div class="title">用户注册协议和隐私政策</div>
+    <div class="content-box">
+      <div class="content">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla illo reprehenderit excepturi, nisi dolores ab
+          tempora, quidem officiis voluptatum asperiores aspernatur harum illum quae alias quam ducimus deleniti cumque
+          iure.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor aliquam commodi architecto quasi facilis
+          magnam necessitatibus voluptatum nemo voluptates, recusandae, mollitia deleniti ipsam id accusantium neque
+          perferendis vitae delectus sunt.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus possimus dignissimos, exercitationem aliquam
+          amet excepturi ab vel error laborum voluptas rem iure, labore similique, accusamus aspernatur magnam fugiat.
+          Nihil, aliquid.</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero possimus dolorum aut explicabo incidunt!
+          Quaerat corrupti minima velit repellendus sit sed iste doloremque aut possimus nulla, odio veniam molestias
+          exercitationem.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus quos voluptatum aliquam reiciendis id
+          excepturi, vitae similique sunt a minus numquam iste cumque, in non minima temporibus recusandae impedit.
+          Pariatur?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati quia pariatur maiores. Quibusdam ea
+          eveniet nihil maxime expedita aliquam blanditiis placeat sequi odio quod dolorem, a iure autem architecto
+          fugiat!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe modi quasi vel nihil fugiat necessitatibus
+          voluptas atque molestias aperiam earum repellat, dignissimos cum recusandae pariatur voluptate libero quos
+          praesentium. Dolores.</p>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla illo reprehenderit excepturi, nisi dolores ab
+          tempora, quidem officiis voluptatum asperiores aspernatur harum illum quae alias quam ducimus deleniti cumque
+          iure.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor aliquam commodi architecto quasi facilis
+          magnam necessitatibus voluptatum nemo voluptates, recusandae, mollitia deleniti ipsam id accusantium neque
+          perferendis vitae delectus sunt.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus possimus dignissimos, exercitationem aliquam
+          amet excepturi ab vel error laborum voluptas rem iure, labore similique, accusamus aspernatur magnam fugiat.
+          Nihil, aliquid.</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero possimus dolorum aut explicabo incidunt!
+          Quaerat corrupti minima velit repellendus sit sed iste doloremque aut possimus nulla, odio veniam molestias
+          exercitationem.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus quos voluptatum aliquam reiciendis id
+          excepturi, vitae similique sunt a minus numquam iste cumque, in non minima temporibus recusandae impedit.
+          Pariatur?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati quia pariatur maiores. Quibusdam ea
+          eveniet nihil maxime expedita aliquam blanditiis placeat sequi odio quod dolorem, a iure autem architecto
+          fugiat!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe modi quasi vel nihil fugiat necessitatibus
+          voluptas atque molestias aperiam earum repellat, dignissimos cum recusandae pariatur voluptate libero quos
+          praesentium. Dolores.</p>
+      </div>
+      <div class="button-box">
+        <button id="btn" disabled>同意并继续</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    var contentElement = document.getElementsByClassName('content')[0]
+    console.log(contentElement)
+    var button = document.getElementById('btn')
+
+    contentElement.onscroll = function () {
+      // 判断滚动条是否滚动到底部
+      if (contentElement.scrollHeight - contentElement.scrollTop <= contentElement.clientHeight) {
+        // 将按钮改为可用状态
+        button.removeAttribute('disabled')
+      } else {
+        button.setAttribute('disabled', 'disabled')
+      }
+    }
+  </script>
+</body>
+
+</html>

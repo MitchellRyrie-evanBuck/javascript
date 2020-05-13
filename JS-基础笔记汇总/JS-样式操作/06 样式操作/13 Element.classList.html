@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="p1" class="p2" style="color: lightcoral;font-weight:bolder">这是一段段落</p>
+    <script>
+        var pelrm = document.getElementById('p1')
+        // pelrm.style = 'color:lightblue;font-weight:lighter'
+        var pasd = document.getElementsByClassName("p2")[0]
+        // console.log(pasd)
+        // pasd.setAttribute('style','color:blue')
+        // pasd.removeAttribute('style')
+        var classlist = pasd.classList
+        classlist.add('font-size:24px')
+        console.log(classlist.contains("font-weight"))
+    </script>
+</body>
+</html>

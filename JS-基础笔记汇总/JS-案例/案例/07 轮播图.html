@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小米首页轮播图</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 1226px;
+      height: 460px;
+      background-color: lightcyan;
+
+      margin: 100px auto;
+
+      position: relative;
+    }
+
+    .container .imgList {
+      width: 100%;
+      position: absolute;
+    }
+
+    .container .imgList img {
+      display: block;
+      width: 100%;
+      height: auto;
+
+      position: absolute;
+      left: 0;
+      top: 0;
+
+      opacity: 0;
+      z-index: 0;
+
+      transition: all 1s;
+    }
+
+    .container .slide-controls {
+      width: 100%;
+      height: 100%;
+
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .container .slide-controls .slide-left,
+    .container .slide-controls .slide-right {
+      width: 41px;
+      height: 69px;
+
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      background-image: url(imgs/icon-slides.png);
+      cursor: pointer;
+
+      z-index: 2;
+    }
+
+    .container .slide-controls .slide-left {
+      left: 0;
+      background-position: -84px 0;
+    }
+
+    .container .slide-controls .slide-left:hover {
+      background-position: 0 0;
+    }
+
+    .container .slide-controls .slide-right {
+      right: 0;
+      background-position: -124px 0;
+    }
+
+    .container .slide-controls .slide-right:hover {
+      background-position: -42px 0;
+    }
+
+    .container .nav {
+      width: 100px;
+      height: 20px;
+
+      position: absolute;
+      left: 50%;
+      right: 0;
+      bottom: 8px;
+
+      transform: translateX(-50%);
+
+      z-index: 2;
+    }
+
+    .container .nav .slide-nav {
+      width: 12px;
+      height: 12px;
+      border: 2px solid #fff;
+      border-color: hsla(0, 0%, 100%, .3);
+      border-radius: 10px;
+      background: rgba(0, 0, 0, .4);
+      cursor: pointer;
+      margin: 0 4px;
+      float: left;
+      z-index: 3;
+    }
+
+    .container .nav .slide-nav:hover {
+      background: hsla(0, 0%, 100%, .4) !important;
+      border-color: rgba(0, 0, 0, .4) !important;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 视觉容器 -->
+  <div class="container">
+    <!-- 图片列表 -->
+    <div class="imgList">
+      <img src="imgs/1.jpg">
+      <img src="imgs/2.jpg">
+      <img src="imgs/3.jpg">
+      <img src="imgs/4.jpg">
+      <img src="imgs/5.jpg">
+    </div>
+    <!-- 左右切换菜单 -->
+    <div class="slide-controls">
+      <div class="slide-left"></div>
+      <div class="slide-right"></div>
+    </div>
+    <!-- 轮播图的导航 -->
+    <div class="nav">
+      <div class="slide-nav"></div>
+      <div class="slide-nav"></div>
+      <div class="slide-nav"></div>
+      <div class="slide-nav"></div>
+      <div class="slide-nav"></div>
+    </div>
+  </div>
+  <script>
+    // 获取轮播图中所有的图片
+    var imgList = document.getElementsByClassName('imgList')[0]
+    var imageElements = imgList.getElementsByTagName('img')
+    // 获取轮播图中所有的导航器
+    var navElement = document.getElementsByClassName('nav')[0]
+    var slideElements = navElement.getElementsByClassName('slide-nav')
+    // 用来记录当前操作图片的索引值, 当前图片切换前的索引值
+    var num = 0,
+      prev = 0
+    // 获取当前索引值的最大值
+    var length = imageElements.length - 1
+    // 获取左右切换的按钮
+    var slideControl = document.getElementsByClassName('slide-controls')[0]
+    var slideLeft = slideControl.getElementsByClassName('slide-left')[0]
+    var slideRight = slideControl.getElementsByClassName('slide-right')[0]
+
+    // 页面加载完毕之后, 完成初始化效果
+    imageElements[num].style.opacity = 1
+    imageElements[num].style.zIndex = 1
+
+    slideElements[num].style.backgroundColor = 'hsla(0, 0%, 100%, .4)'
+    slideElements[num].style.borderColor = 'rgba(0, 0, 0, .4)'
+
+    // 向右切换按钮的动态效果
+    slideRight.addEventListener('click', function () {
+      if (num < length) {
+        // 说明当前的切换是从第一张到第五张
+        num++
+        prev = num - 1
+      } else if (num === length) {
+        // 边界判断: 如果当前是第5张图片的话, 切换回第1张图片
+        num = 0
+        prev = length
+      }
+
+      updateHTML(num, prev)
+    })
+    // 向左切换按钮的动态效果
+    slideLeft.addEventListener('click', function () {
+      if (num > 0) {
+        num--
+        prev = num + 1
+      } else if (num === 0) {
+        num = length
+        prev = 0
+      }
+
+      updateHTML(num, prev)
+    })
+    // 导航器的动态效果(事件委托)
+    navElement.addEventListener('click', function (event) {
+      var target = event.target
+      if (target.className === 'slide-nav') {
+        // 保存切换前的索引值
+        prev = num
+        // 计算当前的导航器在导航器集合中的索引值
+        var arr = []
+        for (var i = 0; i < slideElements.length; i++) {
+          arr.push(slideElements[i])
+        }
+        num = arr.indexOf(target)
+
+        updateHTML(num, prev)
+      }
+    })
+
+    // 封装函数: 专门来更新HTML页面的效果
+    function updateHTML(current, prev) {
+      // 将对应索引值的图片进行显示
+      imageElements[current].style.opacity = 1
+      imageElements[current].style.zIndex = 1
+
+      slideElements[current].style.backgroundColor = 'hsla(0, 0%, 100%, .4)'
+      slideElements[current].style.borderColor = 'rgba(0, 0, 0, .4)'
+      // 将切换前的图片相关样式进行重置
+      imageElements[prev].style.opacity = 0
+      imageElements[prev].style.zIndex = 0
+
+      slideElements[prev].style.backgroundColor = 'rgba(0, 0, 0, .4)'
+      slideElements[prev].style.borderColor = 'hsla(0, 0%, 100%, .3)'
+    }
+  </script>
+</body>
+
+</html>

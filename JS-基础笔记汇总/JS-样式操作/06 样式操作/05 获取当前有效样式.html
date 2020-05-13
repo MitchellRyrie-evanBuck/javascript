@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取当前有效样式</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: lightpink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box" style="background-color: lightsalmon;" class="box">这是一个测试内容.</div>
+  <script>
+    var divElement = document.getElementById('box')
+    // 获取当前有效样式 -> CSSStyleDeclaration对象
+    var style = window.getComputedStyle(divElement)
+    console.log(style.backgroundColor)
+    // 如果样式属性值是长度单位的话, 携带单位 -> 如果计算的话, 强转为Number类型
+    console.log(parseFloat(style.width))
+  </script>
+</body>
+
+</html>

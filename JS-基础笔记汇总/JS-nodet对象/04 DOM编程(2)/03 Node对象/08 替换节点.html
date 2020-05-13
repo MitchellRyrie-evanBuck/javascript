@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>替换节点</title>
+</head>
+
+<body>
+  <ul id="city">
+    <li id="beijing">北京</li>
+    <li id="shanghai">上海</li>
+    <li id="tianjin">天津</li>
+  </ul>
+  <script>
+    var parentElement = document.getElementById('city')
+
+    var liElement = document.getElementById('tianjin')
+
+    // 新节点是新创建的
+    var newLiElement = document.createElement('li')
+    newLiElement.setAttribute('id', 'nanjing')
+    newLiElement.textContent = '南京'
+
+    // 新节点是从HTML页面中获取的
+    var beijing = document.getElementById('beijing')
+
+    parentElement.replaceChild(beijing, liElement)
+  </script>
+</body>
+
+</html>

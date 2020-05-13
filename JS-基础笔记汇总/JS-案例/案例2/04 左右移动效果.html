@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>左右移动效果</title>
+  <style>
+    .container {
+      width: 400px;
+      height: 200px;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .container select,
+    .container .btns {
+      display: block;
+      float: left;
+    }
+
+    .container select {
+      width: 40%;
+      height: 100%;
+    }
+
+    .container select option {
+      font-size: 22px;
+    }
+
+    .container .btns {
+      width: 20%;
+      height: 100%;
+    }
+
+    .container .btns button {
+      display: block;
+      width: 80%;
+      height: 40px;
+      margin: 8px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <select id="first" size="5" multiple>
+      <option>Argentina</option>
+      <option>Brazil</option>
+      <option>Canada</option>
+      <option>Chile</option>
+      <option>China</option>
+      <option>Cuba</option>
+      <option>Denmark</option>
+      <option>Egypt</option>
+      <option>France</option>
+      <option>Greece</option>
+      <option>Spain</option>
+    </select>
+    <div class="btns">
+      <button id="add">&gt;</button>
+      <button id="add_all">&gt;&gt;</button>
+      <button id="remove">&lt;</button>
+      <button id="remove_all">&lt;&lt;</button>
+    </div>
+    <select id="second" size="5" multiple>
+
+    </select>
+  </div>
+  <script>
+    var add = document.getElementById('add')
+    add.onclick = function () {
+      // 左边被选中的
+      var first = document.getElementById('first')
+      var options = first.getElementsByTagName('option')
+      for (var i = 0; i < options.length; i++) {
+        var option = options[i]
+        if (option.selected) {
+          // 移动到右边去
+          var second = document.getElementById('second')
+          second.appendChild(option)
+        }
+      }
+    }
+    var addAll = document.getElementById('add_all')
+    addAll.onclick = function () {
+      var first = document.getElementById('first')
+      // HTMLCollection集合
+      var options = first.getElementsByTagName('option')
+      // 1.具有11个元素,至少得11遍的循环
+      var length = options.length
+      // for (var i = 0; i < length; i++) {
+      //   var second = document.getElementById('second')
+      //   second.appendChild(option[0])
+      // }
+      for (var i = 0; i < options.length; i++) {
+        var option = options[i]
+        var second = document.getElementById('second')
+        second.appendChild(option)
+        i--
+      }
+    }
+  </script>
+</body>
+
+</html>

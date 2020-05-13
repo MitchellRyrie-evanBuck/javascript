@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建节点</title>
+</head>
+
+<body>
+  <select name="menu" id="menu">
+    <option value="beijing">北京</option>
+    <option value="tianjin">天津</option>
+    <option value="shanghai">上海</option>
+    <option value="chongqing">重庆</option>
+    <option value="nanjing">南京</option>
+  </select>
+  <script>
+    // 创建一个新的<option>元素
+    // 1. 创建元素节点
+    var optionElement = document.createElement('option')
+    // 2. 创建文本节点
+    var textNode = document.createTextNode('保定')
+
+    // 3. 创建属性节点
+    // var attrNode = document.createAttribute('value')
+    // 通过nodeValue属性为属性节点设置值
+    // attrNode.nodeValue = 'baoding'
+    // 4. 如何添加属性节点(既不是父节点也不是子节点)
+    // optionElement.setAttributeNode(attrNode)
+
+    // 通过setAttribute()方法进行替换
+    optionElement.setAttribute('value', 'baoding')
+
+    // 5. 将文本节点作为元素节点的子节点添加
+    optionElement.appendChild(textNode)
+
+
+    var select = document.getElementById('menu')
+    select.appendChild(optionElement)
+  </script>
+</body>
+
+</html>

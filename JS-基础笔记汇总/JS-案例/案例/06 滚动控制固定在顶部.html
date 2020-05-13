@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>滚动控制固定在顶部</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 2000px;
+    }
+
+    .menu {
+      width: 800px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background-color: #d9d9d9;
+      overflow: hidden;
+      position: absolute;
+      top: 300px;
+    }
+
+    .menu li {
+      width: 100px;
+      height: 50px;
+      float: left;
+      text-align: center;
+      line-height: 50px;
+    }
+
+    .menu li a {
+      height: 22px;
+      display: block;
+      text-decoration: none;
+      color: #333;
+      line-height: 22px;
+      margin: 14px 0;
+      border-right: .5px solid #9b9b9b;
+    }
+
+    .menu li:last-of-type a {
+      border-right: none;
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="menu">
+    <li><a href="#">最新文章</a></li>
+    <li><a href="#">大公司</a></li>
+    <li><a href="#">消费</a></li>
+    <li><a href="#">娱乐</a></li>
+    <li><a href="#">前沿技术</a></li>
+    <li><a href="#">汽车交通</a></li>
+    <li><a href="#">区块链</a></li>
+    <li><a href="#">技能Get</a></li>
+  </ul>
+  <script>
+    var html = document.documentElement
+    // 获取菜单的top值
+    var menu = document.getElementsByClassName('menu')[0]
+    var menuTop = parseFloat(window.getComputedStyle(menu).top)
+    console.log(menuTop)
+    /*
+      实现页面滚动的事件:
+      * scroll事件: 必须为document对象绑定该事件
+      * wheel事件: 为document对象、<body>元素和<html>元素绑定该事件
+     */
+    document.addEventListener('wheel', function () {
+      // <html>元素的scrollTop属性: 表示页面垂直方向的滚动距离
+      var scrollTop = html.scrollTop
+
+      if (scrollTop >= menuTop) {
+        // 说明菜单滚动到浏览器窗口的顶部
+        menu.style.position = 'fixed'
+        menu.style.top = 0
+      } else {
+        menu.style.position = 'absolute'
+        menu.style.top = menuTop + 'px'
+      }
+    })
+  </script>
+</body>
+
+</html>

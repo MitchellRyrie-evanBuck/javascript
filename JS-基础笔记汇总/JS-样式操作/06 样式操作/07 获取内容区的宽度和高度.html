@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取内容区的宽度和高度</title>
+  <style>
+    .parent {
+      width: 200px;
+      height: 200px;
+      border: 1px solid #000;
+
+      overflow: auto;
+    }
+
+    .child {
+      width: 500px;
+      height: 500px;
+      background-color: lightpink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="parent" class="parent">
+    <div id="child" class="child"></div>
+  </div>
+  <script>
+    var parent = document.getElementById('parent')
+    console.log(parent.scrollWidth, parent.scrollHeight)
+  </script>
+</body>
+
+</html>

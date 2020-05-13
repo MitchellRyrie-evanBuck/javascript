@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片拖动案例</title>
+  <style>
+    .pic {
+      width: 160px;
+      height: auto;
+      border-radius: 10px;
+      position: absolute;
+      left: 200px;
+      top: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <img class="pic" src="imgs/girl.jpg">
+  <script>
+    var img = document.getElementsByClassName('pic')[0]
+    var cloneImg, flag = false
+    // 鼠标点击事件
+    img.onclick = function (event) {
+      flag = true // 表示click事件触发
+
+      // 获取鼠标当前的坐标值
+      var mouseX = event.pageX
+      var mouseY = event.pageY
+      // 计算复制的图片的坐标值
+      var x = mouseX - 80
+      var y = mouseY - 120
+      // 将原有图片复制一张, 并且显示(鼠标显示在图片的正中心)在页面中
+      cloneImg = img.cloneNode()
+      document.body.appendChild(cloneImg)
+      // 通过元素的style属性设置样式(内联样式)
+      cloneImg.style.left = x + 'px'
+      cloneImg.style.top = y + 'px'
+    }
+
+    
+    // 图片跟随鼠标移动 - 鼠标跟随事件
+    var html = document || document.documentElement // <html>元素代表当前页面
+    html.onmousemove = function (event) {
+      if (flag) {
+        // 获取鼠标当前的坐标值
+        var mouseX = event.pageX
+        var mouseY = event.pageY
+        // 计算复制的图片的坐标值
+        var x = mouseX - 80
+        var y = mouseY - 120
+        // 通过元素的style属性设置样式(内联样式)
+        cloneImg.style.left = x + 'px'
+        cloneImg.style.top = y + 'px'
+        // 释放复制图片不跟随鼠标移动
+        // cloneImg.onclick = function () {
+        //   flag = false
+        // }
+        cloneImg.onclick = release
+      }
+    }
+    // 释放复制图片不跟随鼠标移动
+    function release() {
+      flag = false
+    }
+  </script>
+</body>
+
+</html>

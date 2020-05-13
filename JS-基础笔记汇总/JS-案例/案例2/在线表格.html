@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线表格</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+              margin: 0;
+        }
+
+        .tools {
+            width: 100%;
+            height: 30px;
+            background-color: #efefef;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 2889px;
+            table-layout: fixed;
+            /* 表格和列的宽度通过表格的宽度来设置，
+            某一列的宽度仅由该列首行的单元格决定。
+            在当前列中，该单元格所在行之后的行并不会影响整个列宽。 */
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        table,
+        th,
+        td {
+            border: 0.5px solid #d9d9dd;
+        }
+        table th {
+            font-weight: 400;
+            background-color: #efefef;
+        }
+    </style>
+</head>
+<body>
+    <div class="tools">
+        <!-- 选择字号 -->
+        <select id="fontSize">
+          <option value="12" selected>12</option>
+          <option value="14">14</option>
+          <option value="18">18</option>
+          <option value="22">22</option>
+          <option value="30">30</option>
+        </select>
+      </div>
+    <table></table>
+    <script>
+        var table = document.getElementsByTagName('table')[0]
+        // 完成行标题
+        var headTrElement = document.createElement('tr')
+        var headInfo = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+      'U', 'V', 'W', 'X', 'Y', 'Z']
+        for (var i = 0; i <27;i++){
+            var headThement = document.createElement('th')
+            if(i>0){
+                // 将除第一个外的所有字母给标题
+                headThement.textContent = headInfo[i-1]
+            }
+            headTrElement.appendChild(headThement)
+        }
+        table.appendChild(headTrElement)
+
+        // 表格的200行完成
+        for (var i =0;i<200;i++){
+            var trElement = document.createElement('tr')
+            // 完成表格中的列标题
+            var thElement = document.createElement('th')
+            thElement.textContent = i + 1
+            trElement.appendChild(thElement)
+            // 完成表格内容
+
+
+
+        }
+
+    </script>
+</body>
+</html>

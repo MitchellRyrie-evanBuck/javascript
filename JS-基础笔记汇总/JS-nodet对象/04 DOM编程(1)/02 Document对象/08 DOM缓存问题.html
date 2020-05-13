@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM缓存问题</title>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    // 定位HTML页面中的元素之后, 未缓存 -> 只做一次处理的话, 没有问题
+    document.getElementById('box').innerHTML = '<a href="#">测试连接</a>'
+    // 多次定位HTML页面中同一个元素 -> 性能不好
+    document.getElementById('box')
+    // 进行DOM缓存 - 将定位到的HTML页面元素缓存到浏览器的内存中
+    var divElement = document.getElementById('box')
+    // 注意资源使用完毕之后的资源释放
+    divElement = null
+  </script>
+</body>
+
+</html>

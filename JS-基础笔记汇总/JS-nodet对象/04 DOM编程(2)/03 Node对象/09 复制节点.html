@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>复制节点</title>
+</head>
+
+<body>
+  <ul id="city">
+    <!-- HTML页面元素的事件属性 -->
+    <!-- <li onclick="myclick()" id="beijing">北京</li> -->
+    <li id="beijing">北京</li>
+    <li id="shanghai">上海</li>
+    <li id="tianjin">天津</li>
+  </ul>
+  <script>
+    // 复制节点时, 如果原有节点通过HTML页面元素的事件属性绑定事件的话, 复制后的节点同样绑定相同的事件
+    function myclick() {
+      console.log('this is click event.')
+    }
+
+    var parentElement = document.getElementById('city')
+    // 是Node对象或Element对象, 都继承于EventTarget对象
+    var beijing = document.getElementById('beijing')
+    beijing.onclick = function () {
+      console.log('this is click event.')
+    }
+
+    // 复制节点时, 注意是否存在ID属性 -> 如果存在的话, 复制完毕后一定修改ID属性值
+    var newNode = beijing.cloneNode(true)
+
+    parentElement.appendChild(newNode)
+  </script>
+</body>
+
+</html>

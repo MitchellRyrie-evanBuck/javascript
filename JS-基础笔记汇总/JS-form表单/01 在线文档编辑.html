@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>在线文档编辑</title>
+  <style>
+    * {
+      box-sizing:border-box;
+    }
+
+    body {
+      background: #f8f8f8;
+    }
+
+    .container-text {
+      width: 800px;
+      height: 1200px;
+      background-color: #fff;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.06);
+      margin: 100px auto;
+      padding: 100px;
+    }
+
+    .container-text #text {
+      width: 600px;
+      height: 1000px;
+      resize: none;
+      outline: none;
+      border: none;
+      font-size: 12pt;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-text">
+    <textarea id="text" cols="30" rows="10"></textarea>
+    <span style="font-weight: 800;">文本内容</span>
+  </div>
+  <script>
+    var textElement = document.getElementById('text')
+    textElement.addEventListener('select', function () {
+      // 1.获取当前文本框的文本内容
+      var textValue = textElement.value
+      // console.log(textValue)
+      // 2.获取用户当前选择的文本内容
+      var textSelection = textValue.slice(textElement.selectionStart, textElement.selectionEnd)
+      console.log(textSelection)
+      // 3.举例: 将选择的文本内容进行加粗显示
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>获取焦点事件</title>
+  <style>
+    input {
+      color: #d9d9d9;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 单行输入框 -->
+  <input type="text" id="username" value="请输入你的用户名">
+  <!-- 多行输入框 -->
+  <textarea name="decs" id="decs" cols="30" rows="10"></textarea>
+  <script>
+    /*
+      focus事件: 表示获取焦点事件
+      blur事件: 表示失去焦点事件
+     */
+    var username = document.getElementById('username')
+    username.addEventListener('focus', function () {
+      username.value = ''
+    })
+    username.addEventListener('blur', function () {
+      username.value = '请输入你的用户名'
+    })
+  </script>
+</body>
+
+</html>

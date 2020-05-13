@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>变化大小事件</title>
+  <style>
+    #decs {
+      width: 400px;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <textarea name="decs" id="decs" cols="30" rows="10"></textarea>
+  <script>
+    // resize事件: 监听大小的变化
+
+    // 获取到当前浏览器窗口的内部宽度和高度
+    window.addEventListener('resize', function () {
+      console.log(window.innerWidth, window.innerHeight)
+    })
+
+    // var decs = document.getElementById('decs')
+    // decs.addEventListener('resize', function () {
+    //   var style = window.getComputedStyle(decs)
+    //   console.log(style.width, style.height)
+    // })
+  </script>
+</body>
+
+</html>

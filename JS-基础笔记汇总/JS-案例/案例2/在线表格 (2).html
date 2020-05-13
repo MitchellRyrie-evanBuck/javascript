@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简易的在线表格</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+    }
+
+    .tools {
+      width: 100%;
+      height: 30px;
+      background-color: #efefef;
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 2889px;
+      table-layout: fixed;
+          /* 表格和列的宽度通过表格的宽度来设置，
+            某一列的宽度仅由该列首行的单元格决定。
+            在当前列中，该单元格所在行之后的行并不会影响整个列宽。 */
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+
+    table,
+    th,
+    td {
+      border: 0.5px solid #d9d9dd;
+    }
+
+    table th,
+    table td {
+      width: 107px;
+      height: 22px;
+      font-weight: 300;
+      padding: 0;
+      margin: 0;
+    }
+
+    table th {
+      font-weight: 400;
+      background-color: #efefef;
+    }
+
+    table td textarea {
+      display: block;
+      width: 107px;
+      height: 22px;
+      line-height: 22px;
+      border: none;
+      padding: 0 5px;
+      margin: 0;
+      resize: none;
+      cursor: default;
+    }
+
+    table td textarea:focus {
+      outline: none;
+      border: 2px solid lightskyblue;
+      line-height: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="tools">
+    <!-- 选择字号 -->
+    <select id="fontSize">
+      <option value="12" selected>12</option>
+      <option value="14">14</option>
+      <option value="18">18</option>
+      <option value="22">22</option>
+      <option value="30">30</option>
+    </select>
+  </div>
+  <table></table>
+  <script>
+    var table = document.getElementsByTagName('table')[0]
+    // 1. 完成表格中的行标题
+    var headTrElement = document.createElement('tr')
+    var headInfo = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T',
+      'U', 'V', 'W', 'X', 'Y', 'Z'
+    ]
+    for (var i = 0; i < 27; i++) {
+      var headThElement = document.createElement('th')
+      // 从第2个开始显示标题
+      if (i > 0) {
+        headThElement.textContent = headInfo[i - 1]
+      }
+      headTrElement.appendChild(headThElement)
+    }
+    table.appendChild(headTrElement)
+    // 2. 完成表格
+    for (var i = 0; i < 200; i++) {
+      var trElement = document.createElement('tr')
+      // 完成表格中的列标题
+      var thElement = document.createElement('th')
+      thElement.textContent = i + 1
+      trElement.appendChild(thElement)
+      // 完成表格内容
+      for (var j = 0; j < 26; j++) {
+        var tdElement = document.createElement('td')
+
+        var textareaElement = document.createElement('textarea')
+        textareaElement.setAttribute('rows', '1')
+        textareaElement.setAttribute('readonly', 'readonly')
+        // 选单元格时 可读 ，不会出现文字闪动
+        tdElement.appendChild(textareaElement)
+
+        trElement.appendChild(tdElement)
+      }
+      table.appendChild(trElement)
+
+      // 单元格获取焦点的效果
+      var focusTdElements = document.getElementsByTagName('td')
+      for (var k = 0; k < focusTdElements.length; k++) {
+        var focusTdElement = focusTdElements[k]
+        // 每个单元格的点击逻辑
+        focusTdElement.onclick = function (event) {
+          var thElements = table.getElementsByTagName('th')
+          for (var x = 0; x < thElements.length; x++) {
+            var thElement = thElements[x]
+            thElement.style.backgroundColor = '#efefef'
+          }
+
+          var target = event.target
+          var tdElement
+          if (target.nodeName === 'TEXTAREA') {
+            // 判断是否是在文字域中
+            tdElement = target.parentNode
+            // 如果是就把上一级TD返回
+          } else if (target.nodeName === 'TD') {
+            tdElement = target
+            // 判断是否是在TD上
+          }
+          // 设置文本域为只读
+          var textareaElement = tdElement.firstChild
+          textareaElement.setAttribute('readonly', 'readyonly')
+
+          // 当前单元格所在行的标题 
+          var trElement = tdElement.parentNode
+          var thElement = trElement.firstChild
+          thElement.style.backgroundColor = '#d9d9dd'
+
+          // 当前的<td>元素是<tr>元素的第几个子元素
+          var tdElements = trElement.childNodes
+          var arr = Array.prototype.slice.call(tdElements)
+          // 进行一个浅拷贝  返回一个数组
+          var index = arr.indexOf(tdElement)
+            // arr.indexOf(searchElement)
+            // searchElement要查找的元素
+
+
+          var headTrElement = table.getElementsByTagName('tr')[0]
+          var headThElements = headTrElement.getElementsByTagName('th')
+          var targetThElement = headThElements.item(index)
+          targetThElement.style.backgroundColor = '#d9d9dd'
+        }
+        // 每个单元格的双击逻辑
+        focusTdElement.ondblclick = function () {
+          var target = event.target
+          var textareaElement
+          if (target.nodeName === 'TEXTAREA') {
+            textareaElement = target
+          } else if (target.nodeName === 'TD') {
+            textareaElement = target.firstChild
+          }
+          textareaElement.removeAttribute('readonly')
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

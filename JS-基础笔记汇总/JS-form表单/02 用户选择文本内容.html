@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用户选择文本内容</title>
+  <style>
+    p::selection {
+      color: gold;
+      background-color: lightcoral;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste quae mollitia rerum totam! Impedit dolorem numquam
+    possimus modi deserunt fugiat obcaecati aperiam vitae, temporibus nostrum molestiae adipisci delectus quos autem.
+  </p>
+
+  <input type="text" id="text" value="这是一个用来测试的文本内容.">
+  <script>
+    var text = document.getElementById('text')
+    text.addEventListener('focus', function () {
+      // 全选文本框中的所有文本内容
+      text.select()
+    })
+    /*
+      select事件的触发机制:
+      * select()方法被调用时
+      * 当选择<input>元素中的文本内容时
+     */
+    text.addEventListener('select', function () {
+      // 触发了2次
+      console.log('select()方法被调用了...')
+    })
+
+    // var pElement = document.getElementsByTagName('p')[0]
+    // // HTMLParagraphElement对象
+    // pElement.select() // 语法错误
+  </script>
+</body>
+
+</html>
