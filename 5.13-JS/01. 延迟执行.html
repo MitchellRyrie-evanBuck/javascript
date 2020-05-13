@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p>点击按钮，在等待 3 秒后弹出 "Hello"。</p>
+    <button onclick="myFunction()">点我</button>
+
+    <script>
+           /*
+        setTimeout(code,millisec,lang) 方法
+            作用 -- 设置一个定时器
+            参数
+                * code -- 必需。要调用的函数后要执行的 JavaScript 代码串。
+                * millisec -- 必需。在执行代码前需等待的毫秒数。
+                * lang -- 可选。脚本语言可以是： JavaScript
+            返回值 -- 表示当前定时器的标识
+            注意 -- 打乱代码默认的顺序执行流程
+        */ 
+
+
+    function myFunction(){
+        setTimeout(function(){alert("Hello")},3000);
+    }
+
+    // setTimeout(function(){
+    //         console.log('延迟执行三秒')
+    //     },3000)
+      
+    var t = setTimeout(function(){
+        console.log('延迟执行三秒')
+    },3000)
+
+      //清除时间
+    clearTimeout(t)
+
+
+    </script>
+    
+</body>
+</html>

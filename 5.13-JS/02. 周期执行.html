@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+          console.log('直接执行')
+
+            /*
+            setTimeout(code,millisec,lang) 方法
+                作用 -- 设置一个周期执行的定时器
+                参数
+                    * code -- 必需。要调用的函数或要执行的代码串。
+                    * millisec -- 必须。周期性执行或调用 code 之间的时间间隔，以毫秒计。
+                    * lang -- 可选。脚本语言可以是： JavaScript
+                返回值 -- 表示当前定时器的标识
+            */ 
+
+
+            // setInterval(function(){
+            //     console.log('周期执行1秒')
+            // },1000)
+
+
+            // 延迟执行来模拟周期执行
+            function fun() {
+                console.log('this is interval...')
+                setTimeout(fun,1000) 
+            }
+            fun();
+
+
+            // (function fun(){
+            //     console.log('this is interval...')
+            //     setTimeout(fun,1000) 
+            //     //setTimeout(arguments.callee,1000);
+            // }) ()
+
+
+            console.log('直接执行，too')
+
+    </script>
+
+</body>
+</html>

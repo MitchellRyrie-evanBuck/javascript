@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log('直接执行')
+
+        // var requestAnimationFrame = webkitRequestAnimationFrame || mozRequestAnimationFrame ||
+
+        /*
+            requestAnimationFrame(callback)方法
+                作用 - HTML5新增的动画方法
+                参数
+                    callback - 表示执行动画逻辑的回调函数
+                返回值
+                    表示当前执行动画的标识
+                注意 - 具有浏览器兼容问题
+            cancelAnimationFrame(animationID)方法
+                作用 - 取消由requestAnimationFrame() 方法设定的动画机制
+        */ 
+
+        requestAnimationFrame(function(){
+            console.log('animation')//执行一次
+        })
+
+        console.log('直接执行，too')
+
+        window.requestAnimationFrame(function(){
+            console.log('测试');
+      })
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #box{
+            width: 50px;
+            height: 50px;
+            background-color: lightslategrey;
+            position: absolute;
+            top: 300px;
+            left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+
+    <script>
+        var box = document.getElementById('box')
+        box.addEventListener('click',isMove)
+
+        //定义一个标识-表示是停止还是移动
+        var flag = false;//表示停止
+        var t//定时器的标识
+
+        
+        //判断当前方块的状态
+        function isMove(){
+            if(!flag){//如果停止，就移动
+                //将标识设置为true -- 表示移动
+                flag = true
+                move()
+            }else{//如果移动，就停止
+                flag = false
+                stop()
+            }
+
+        }
+
+        //实现方块移动逻辑
+        function move(){
+            //1.获取当前方块的left样式属性值
+            var style = window.getComputedStyle(box)
+            var left =  parseInt(style.left)
+            //2.增加left样式属性值
+            left ++
+            //3.利用内联样式覆盖外联样式
+            box.style.left = left + 'px'
+            //4.设置定时器
+            t = setTimeout(move,5)
+        }
+
+        //实现方块停止逻辑
+        function stop(){
+            clearTimeout(t)
+        }
+    </script>
+</body>
+</html>

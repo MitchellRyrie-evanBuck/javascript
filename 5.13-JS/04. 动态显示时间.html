@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="start">开始显示</button>
+    <button id="stop">停止显示</button>
+    <h2 id="showtime"></h2>
+
+
+    <script>
+        //表示定时器的标识---------全局变量
+        var t;
+
+        //开始显示-------控制第一个button
+        var start = document.getElementById('start')
+        start.addEventListener('click',showTime);
+
+        //停止显示-----控制第二个停止button
+        var stop = document.getElementById('stop')
+        stop.addEventListener('click',function(){
+            clearTimeout(t)
+            start.removeAttribute('disabled')
+        })
+
+        //定义一个函数-完成获取时间并显示的功能
+        function showTime() {
+            //讲当前按钮禁用
+            start.setAttribute('disabled','disabled')
+            //1.获取当前时间
+            var date = new Date()
+            var hour = date.getHours()
+            var minute = date.getMinutes()
+            var second = date.getSeconds()
+
+            // 2.格式化当前时间
+            var time = hour + ':' + minute + ':' + second
+
+            //3.实现动态显示
+            var showtime = document.getElementById('showtime')
+            showtime.textContent = time
+
+            //4.设置一个定时器
+            t = setTimeout(showTime,1000)
+        }
+
+    </script>
+</body>
+</html>
