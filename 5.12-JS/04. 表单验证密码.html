@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #d9d9d9;
+        }
+
+        #register {
+            width: 400px;
+            height: 300px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: rgb(139, 139, 139) 0 0 5px 5px;
+            padding: 30px;
+            margin: 100px auto;
+        }
+
+        #register .module {
+            width: 100%;
+            height: 60px;
+        }
+
+        .module label,
+        .module input {
+            display: block;
+            float: left;
+        }
+
+        .module label {
+            width: 30%;
+            height: 100%;
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .module input {
+            width: 70%;
+            outline: none;
+        }
+
+        .module input[type="submit"] {
+            width: 100%;
+        }
+
+        .message {
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <form id="register" action="#">
+        <div class="module">
+            <label for="username">用户名:</label>
+            <input type="text" required id="username">
+        </div>
+        <div class="module">
+            <label for="password1">密码:</label>
+            <input type="password" id="password1">
+        </div>
+        <div class="module">
+            <label for="password2">确认密码:</label>
+            <input type="password" id="password2">
+        </div>
+        <div class="module">
+            <input type="submit" id="submit" value="注册">
+        </div>
+        <div class="message" id="message"></div>
+    </form>
+
+    <script>
+        var message = document.getElementById('message')
+        var username = document.getElementById('username')
+        username.addEventListener('focus', function () {
+            // 给出提示
+            message.innerHTML = '用户名是6位~12位英文大写字母、小写字母、数字和下划线'
+            message.style.color = 'gray'
+        })
+        username.addEventListener('blur', checkUsername)
+        var password1 = document.getElementById('password1')
+        password1.addEventListener('focus', function () {
+            // 给出提示
+            message.innerHTML = '密码是6位~12位英文大写字母、小写字母、数字和下划线'
+            message.style.color = 'gray'
+        })
+        password1.addEventListener('blur', checkPassword)
+        var password2 = document.getElementById('password2')
+        password2.addEventListener('blur', confirmPassword)
+
+        function checkUsername() {
+            // 做验证
+            // 进行正则表达验证
+            var reg = /^[a-zA-Z0-9_]{6,12}$/
+            var value = username.value
+            if (!reg.test(value)) {
+                message.innerHTML = '你输入的用户名不符合要求'
+                message.style.color = 'red'
+                return false
+            } else {
+                return true
+            }
+        }
+
+        function checkPassword() {
+            // 做验证
+            // 进行正则表达验证
+            var reg = /^[a-zA-Z0-9_]{6,12}$/
+            var value = password1.value
+            if (!reg.test(value)) {
+                message.innerHTML = '你输入的密码不符合要求'
+                message.style.color = 'red'
+                return false
+            } else {
+                return true
+            }
+        }
+
+        function confirmPassword() {
+            // 做验证
+            var value1 = password1.value
+            var value2 = password2.value
+            if (value1 !== value2) {
+                message.innerHTML = '两次密码输入不一致'
+                message.style.color = 'red'
+                return false
+            } else {
+                return true
+            }
+        }
+
+        var register = document.getElementById('register')
+        register.addEventListener('submit', function (event) {
+            if (!checkUsername() || !checkPassword() || !confirmPassword()) {
+                // 说明所有内容都是填写错误
+                event.preventDefault()
+                message.innerHTML = '表单输入有误'
+                message.style.color = 'red'
+            }
+        })
+    </script>
+</body>
+</html>

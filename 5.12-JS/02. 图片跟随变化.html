@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img id="imgs" src="https://s1.ax1x.com/2020/05/13/YdRa4K.jpg">
+
+    <script>
+        var img = document.getElementById('imgs')
+
+        // resize事件 一 当浏览器窗口大小变化时触发
+        window.addEventListener('resize',function(){
+            console.log(window.innerWidth, window.innerHeight) 
+        })
+    </script>
+</body>
+</html>

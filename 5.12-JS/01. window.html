@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window对象</title>
+</head>
+<body>
+    <script>
+        var v = 100
+        console.log(v)
+        console.log(window.v)
+
+        //函数 - window对象的方法
+        function fun(){
+        console.log('this is function...')
+        }
+        fun()
+        window.fun()
+
+
+        // alert()显示带有一段信息和一个确认按钮的警告框
+        //  (一般不用，自己写一个，原生的弹窗比较丑，而已还具有中断一切的作用)  
+        alert("世界你好")
+
+        // 显示带有一段消息以及确认按钮和取消按钮的对话框。
+        // (按确认返回 true 按取消返回false)
+        confirm("????")
+
+        // 显示可提示用户输入的对话框(按确认，返回输入的值)
+        prompt("请输入")
+    </script>
+</body>
+</html>
