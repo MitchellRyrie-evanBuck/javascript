@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #menu{
+            width: 100px;
+            height: 300px;
+            border: 1px solid black;
+            background-color: aquamarine;
+            position: absolute;
+            left: 300px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu"></div>
+
+    <script>
+        //1.获取指定元素
+        let menu = document.getElementById('menu')
+        //封装函数 -- 实现指定元素的高度值减少
+        function slideUp(){
+            //2.获取指定元素的当前有效样式
+            let style = document.defaultView.getComputedStyle(menu)
+            //3.获取指定元素的高度值
+            let height = parseInt(style.height)
+            //判断当前的高度值是否为0
+            if(height <= 0){
+                //将指定元素进行隐藏
+                menu.style.display = 'none'
+                clearTimeout(t)
+            }else{
+                //4.减少指定元素的高度值
+                height--
+                //5.将减少的高度值重新为指定元素进行设置
+                menu.style.height = height + 'px'
+                //6.设置定时器
+                let t = setTimeout(slideUp,10)
+            }
+            
+        }
+        slideUp()
+
+    </script>
+</body>
+</html>

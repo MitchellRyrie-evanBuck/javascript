@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        #box{
+            width: 50px;
+            height:50px;
+            background-color: lightcoral;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="box"></div>
+    <script>
+        /*
+        情节：
+            通过键盘控制方块移动-------上下左右-----空格键停止（space）
+
+            bug: 如果按一下方向键 他会向前 多按几下 他会在原先基础上加速度 通过反方向键来抵消速度
+            如果按几下方向键 通过space是停不下来的    按几下方向 就得按几次space 
+        */
+
+
+        var html=document.documentElement;
+        var body=document.body;
+        // 先获取id
+        var box=document.getElementById('box')
+        // 获取宽高样式
+        var boxStyle=window.getComputedStyle(box);
+        var boxTop=parseInt(boxStyle.top);
+        var boxLeft=parseInt(boxStyle.left);
+
+        var tUp,tDown,tLeft,tRight;
+        body.addEventListener('keydown',function(event){
+            // 获取键盘按下的键是哪个  同key一样
+            var key=event.code;
+            
+            boxTop=parseInt(boxStyle.top);
+            boxLeft=parseInt(boxStyle.left);
+            switch(key){
+                case 'ArrowUp':
+                    moveUp();
+                    break;
+                case 'ArrowDown':
+                    moveDown();
+                    break;
+                case 'ArrowLeft':
+                    moveLeft();
+                    break;
+                case 'ArrowRight':
+                    moveRight();
+                    break;
+                case 'Space':
+                    if(tUp!==undefined){
+                        clearTimeout(tUp);
+                    }
+                    if(tLeft!==undefined){
+                        clearTimeout(tLeft);
+                    }
+                    if(tRight!==undefined){
+                        clearTimeout(tRight);
+                    }
+                    if(tDown!==undefined){
+                        clearTimeout(tDown);
+                    }
+                    break;
+            }
+        })
+        function moveUp(){
+            box.style.top=(--boxTop)+'px';
+            tUp=setTimeout(moveUp,5)
+
+            if(tDown!==undefined){
+                clearTimeout(tDown);
+            }
+            if(tLeft!==undefined){
+                clearTimeout(tLeft);
+            }
+            if(tRight!==undefined){
+                clearTimeout(tRight);
+            }
+            
+            
+        }
+        function moveDown(){
+            box.style.top=(++boxTop)+'px';
+            tDown=setTimeout(moveDown,5)
+            if(tUp!==undefined){
+                clearTimeout(tUp);
+            }
+            if(tLeft!==undefined){
+                clearTimeout(tLeft);
+            }
+            if(tRight!==undefined){
+                clearTimeout(tRight);
+            }
+        }
+        function moveLeft(){
+            box.style.left=(--boxLeft)+'px'; 
+            tLeft=setTimeout(moveLeft,5)
+
+            if(tUp!==undefined){
+                clearTimeout(tUp);
+            }
+            if(tDown!==undefined){
+                clearTimeout(tDown);
+            }
+            if(tRight!==undefined){
+                clearTimeout(tRight);
+            }
+        }
+        function moveRight(){
+            box.style.left=(++boxLeft)+'px';
+            tRight=setTimeout(moveRight,5)
+
+            if(tUp!==undefined){
+                clearTimeout(tUp);
+            }
+            if(tLeft!==undefined){
+                clearTimeout(tLeft);
+            }
+            if(tDown!==undefined){
+                clearTimeout(tDown);
+            }
+        }
+    </script>
+</body>
+</html>

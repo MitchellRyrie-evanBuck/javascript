@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .box{
+            width: 50px;
+            height: 50px;
+            background-image: url(https://s1.ax1x.com/2020/05/16/YcyLgx.th.jpg);
+            background-size: 50px 50px;
+            background-repeat: no-repeat;
+            border-radius: 25px;
+            position: absolute;
+            left: 400px;
+            /* 将小球放在屏幕外 */
+            top: -50px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var body = document.body
+        //获取window的宽度
+        const WIDTH = window.innerWidth
+
+        //向页面中创建小球
+        function createBox(){
+            var div = document.createElement('div')
+            div.setAttribute('class','box')
+            //随机创建小球的left的位置
+            var random = Math.random() * (WIDTH - 50)
+            div.style.left = random + 'px'
+            body.appendChild(div)
+        }
+
+        //控制小球向下移动
+        function moveDown(){
+            var boxs = document.getElementsByClassName('box')
+            //遍历多个小球
+            for (var i = 0;i<boxs.length;i++){
+                var box = boxs[i]
+                //获取class的box
+                var style = window.getComputedStyle(box)
+                var boxTop = parseInt(style.top)
+                boxTop += 10
+                box.style.top = boxTop + 'px'
+            }
+            
+        }
+
+        //创建多个小球
+        for(var i = 0;i < 10;i++){
+            createBox()
+        }
+        //反复执行
+        setInterval(function(){
+            moveDown()
+        },500)
+    </script>
+</body>
+</html>
