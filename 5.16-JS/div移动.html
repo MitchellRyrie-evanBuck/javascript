@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			margin: 200px auto;
+			width: 600px;
+			height: 100px;
+			border: 1px solid #333;
+			overflow: hidden;
+		}
+
+		.wrap {
+			width: 600%;
+			transition: all .3s ease-in;
+		}
+
+		.change {
+			transition: height .3s ease !important;
+		}
+
+		.item {
+			float: left;
+			background-color: #999;
+			border: 1px solid #fff;
+			box-sizing: border-box; 
+			width: 200px;
+			height: 100px;
+			line-height: 100px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="wrap">
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+			<div class="item">4</div>
+			<div class="item">5</div>
+			<div class="item">6</div>
+			<div class="item">7</div>
+			<div class="item">8</div>
+			<div class="item">9</div>
+			<div class="item">10</div>
+			<div class="item">11</div>
+			<div class="item">12</div>
+			<div class="item">13</div>
+			<div class="item">14</div>
+			<div class="item">15</div>
+			<div class="item">1</div>
+			<div class="item">2</div>
+			<div class="item">3</div>
+		</div>
+	</div>
+</body>
+<script>
+	let wrapNode = document.querySelector(".wrap")
+	// 获取container 可视窗口宽度
+	let fixedTranslateVal = wrapNode.parentNode.clientWidth
+	// 获取div总宽度
+	let boundary = wrapNode.clientWidth
+	// 声明一个全局变量
+	let translateVal = 0
+
+	setInterval(() => {
+		main()
+	}, 1000)
+
+	function main() {
+		// 这里进行占位赋值----字符串拼接
+		wrapNode.style.transform = `translateX(${translateVal}px)`
+		// 如果
+		if (translateVal === -fixedTranslateVal) {
+			// 移除增加的无用transition效果
+			wrapNode.classList.remove("change")
+		}
+		// 进行左移  左移的距离是一个可视窗口的长度
+		translateVal -= fixedTranslateVal
+	}
+	//  transitionend 事件------transitionend 事件在 CSS 完成过渡后触发。
+	wrapNode.addEventListener("transitionend", (event) => {
+		// 如果translateVal进行左移的距离到总长度的尽头
+		if (translateVal === -(boundary)) {
+			// 为div元素添加class属性change
+			// 作用就是将其动画给顶掉，之前的transition为all值，将其改为height 没有被触发，
+			wrapNode.classList.add("change")
+			// 立马使div总长度挪回原来的位置，并且没有触发动画
+			wrapNode.style.transform = `translateX(0px)`
+			// 使15之后的123 直接调到456
+			translateVal = -fixedTranslateVal
+		}
+	})
+</script>
+</html>
