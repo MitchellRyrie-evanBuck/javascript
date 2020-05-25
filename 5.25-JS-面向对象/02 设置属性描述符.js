@@ -14,7 +14,7 @@ obj.name = 'Deity2'
 console.log(obj.name)//222
 
 
-Object.defineProperty(objm,'age',{
+Object.defineProperty(obj,'age',{
     value : 18,
     writable : false
 })
@@ -26,3 +26,29 @@ console.log(obj.age) //80
 //删除age属性值
 delete obj.age
 console.log(obj.age)//undefined
+
+var user = {};
+user.age = 18
+
+Object.defineProperty(user,"name",{
+ value:"蜗牛"
+})
+Object.defineProperty(user,"isSlow",{
+ value:true
+})
+Object.defineProperty(user,"sayHi",{
+ value:function () { console.log("Hi !") }
+})
+Object.defineProperty(user,"age",{
+ value:12
+})
+Object.defineProperty(user,"birth",{
+ value:{
+  date:"2020-05-25",
+  hour:"15:30"
+ }
+})
+var resut = Object.getOwnPropertyNames(user)
+console.log(resut);
+user.name = "liu"
+console.log(user.name)
