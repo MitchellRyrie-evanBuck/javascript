@@ -22,7 +22,7 @@ object. defineProperty(obj, prop, desc)方法
 Object.defineProperty(obj,'name',{
     value :'刘孝文'
 })
-console.log(obj.name)//222
+console.log(obj.name)//刘孝文
 
 /*
 同样都是为对象新增属性

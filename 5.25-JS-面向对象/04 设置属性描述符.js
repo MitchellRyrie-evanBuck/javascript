@@ -8,7 +8,7 @@ Object.defineProperty(obj,'name',{
     enumerable : false
 })
 
-console.log(obj.name)//222
+console.log(obj.name)//Deity
 
 /*
 属性描述符enumerable -控制当前属性是否可被枚举(遍历)

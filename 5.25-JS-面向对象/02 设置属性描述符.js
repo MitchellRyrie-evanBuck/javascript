@@ -7,11 +7,11 @@ Object.defineProperty(obj,'name',{
     value : 'devil',
     writable : false//不可修改
 })
-console.log(obj.name)//222
+console.log(obj.name)//Deity
 
 //修改name属性值
 obj.name = 'Deity2'
-console.log(obj.name)//222
+console.log(obj.name)//Deity
 
 
 Object.defineProperty(obj,'age',{

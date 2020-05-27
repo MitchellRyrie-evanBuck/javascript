@@ -4,7 +4,7 @@
 */ 
 
 var obj = {
-    name : '111'
+    name : 'Deity'
 }
 
 /*
@@ -15,5 +15,6 @@ Object. getOwnPropertyDescriptor (obj,prop)
     * *返回值-其属性描述符对象
 
 */ 
-var result = Object.getOwnPropertyDescriptor(obj,'name1')
-console.log(result,value)
+var result = Object.getOwnPropertyDescriptor(obj,"name")
+console.log(result)
+
