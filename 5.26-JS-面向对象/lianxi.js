@@ -19,3 +19,8 @@ function a(b){
 }
 
 a(1)
+
+
+
+this.a = 1111
+console.log(this.a)
