@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用于测试</title>
+  <script src="mytool-1.1.js"></script>
+</head>
+
+<body>
+  <div id="box">这是一个Div元素</div>
+  <h1>这是一个标题</h1>
+  <h1>这是另一个标题</h1>
+  <p class="bgColor">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore saepe nesciunt quas cumque quasi,
+    repellat doloremque in ad distinctio? Nesciunt, magnam nobis? Eaque culpa provident doloremque exercitationem, quos
+    fugiat dicta.</p>
+  <p class="bgColor">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia animi soluta quas? Eligendi doloribus
+    quisquam alias, et, officia sint debitis nisi, dicta sunt eveniet tempore iusto natus aliquam reiciendis laudantium?
+  </p>
+  <script>
+    // HTML页面中的全局对象是window对象
+    // console.log(mytool)
+    // console.log($)
+
+    /*
+      工具库开放给全局作用域的内容, 用法:
+      * $()          -> 将开放给全局作用域是函数, 直接调用该函数
+        * 作用: 用来封装定义HTML页面元素的功能
+        * 返回: 定义页面元素后的结果 
+      * $().function -> 将开放给作用域的是函数, 函数调用后返回对象, 通过对象调用它的方法
+        * 因为函数调用后, 返回定义页面的元素集合 -> 跟页面操作相关
+      * $.function   -> 将开放给作用域的是对象, 通过对象调用方法
+        * 通过这种方式扩展工具方法, 比如遍历方法
+     */
+    console.log($('#box'))
+    console.log($('.bgColor'))
+    console.log($('h1'))
+
+    $().sayMe()
+  </script>
+</body>
+
+</html>

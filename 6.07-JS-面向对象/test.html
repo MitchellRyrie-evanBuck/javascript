@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用于测试</title>
+  <script src="mytool-1.2.js"></script>
+</head>
+
+<body>
+  <div id="box">这是一个Div元素</div>
+  <h1>这是一个标题</h1>
+  <h1>这是另一个标题</h1>
+  <p class="bgColor">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore saepe nesciunt quas cumque quasi,
+    repellat doloremque in ad distinctio? Nesciunt, magnam nobis? Eaque culpa provident doloremque exercitationem, quos
+    fugiat dicta.</p>
+  <p class="bgColor">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia animi soluta quas? Eligendi doloribus
+    quisquam alias, et, officia sint debitis nisi, dicta sunt eveniet tempore iusto natus aliquam reiciendis laudantium?
+  </p>
+  <script>
+    console.log(this, window)
+
+    console.log($(), MyTool())
+
+    // var str = 'abcdefg'
+    // console.log(str.slice(0, 1), str[0])
+
+    console.log($('#box'))
+    console.log($('.bgColor'))
+    console.log($('h1'))
+    // 创建一个新的元素
+    console.log($('<p class="bgColor" id="pElement" name="pElement">这是一个段落</p>'))
+    // console.log($('<input type="text">'))
+
+    var str = '<p class="bgColor">这是一个段落</p>'
+    console.log(str.match(/[<]/g).length)
+  </script>
+</body>
+
+</html>
