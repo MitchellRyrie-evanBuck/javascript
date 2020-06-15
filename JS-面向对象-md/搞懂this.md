@@ -1,14 +1,6 @@
-## 前端面试之彻底搞懂this指向
-
-
-
-> this是JavaScript中的一个关键字，但是又一个相对比较特别的关键字，不像function、var、for、if这些关键字一样，可以很清楚的搞清楚它到底是如何使用的。
-
 ## 一. 理解this
 
 ### 1.1. 为什么使用this
-
-在常见的编程语言中，几乎都有this这个关键字（Objective-C中使用的是self），但是JavaScript中的this和常见的面向对象语言中的this不太一样：
 
 - 常见面向对象的编程语言中，比如Java、C++、Swift、Dart等等一系列语言中，this通常只会出现在`类的方法`中。
 - 也就是你需要有一个类，类中的方法（特别是实例方法）中，this代表的是当前调用对象。
@@ -23,7 +15,7 @@
 
 ```
 var obj = {
-  name: "why",
+  name: "Deity",
   running: function() {
     console.log(obj.name + " running");
   },
@@ -42,7 +34,7 @@ var obj = {
 
 ```
 var obj = {
-  name: "why",
+  name: "Deity",
   running: function() {
     console.log(this.name + " running");
   },
@@ -69,9 +61,9 @@ var obj = {
 ```
 console.log(this); // window
 
-var name = "why";
-console.log(this.name); // why
-console.log(window.name); // why
+var name = "Deity";
+console.log(this.name); // Deity
+console.log(window.name); // Deity
 ```
 
 但是，开发中很少直接在全局作用域下去使用this，通常都是在**函数中使用**。
@@ -96,7 +88,7 @@ foo(); // window
 
 // 2.调用方式二: 将foo放到一个对象中,再调用
 var obj = {
-  name: "why",
+  name: "Deity",
   foo: foo
 }
 obj.foo() // obj对象
@@ -182,7 +174,7 @@ function foo(func) {
 }
 
 var obj = {
-  name: "why",
+  name: "Deity",
   bar: function() {
     console.log(this); // window
   }
@@ -208,7 +200,7 @@ function foo() {
 }
 
 var obj = {
-  name: "why",
+  name: "Deity",
   foo: foo
 }
 
@@ -290,7 +282,7 @@ function foo() {
 }
 
 foo.call(window); // window
-foo.call({name: "why"}); // {name: "why"}
+foo.call({name: "Deity"}); // {name: "Deity"}
 foo.call(123); // Number对象,存放时123
 ```
 
@@ -311,7 +303,7 @@ function foo() {
 }
 
 var obj = {
-  name: "why"
+  name: "Deity"
 }
 
 function bind(func, obj) {
@@ -335,7 +327,7 @@ function foo() {
 }
 
 var obj = {
-  name: "why"
+  name: "Deity"
 }
 
 var bar = foo.bind(obj);
@@ -448,7 +440,7 @@ function Person(name) {
   this.name = name; // Person {name: "why"}
 }
 
-var p = new Person("why");
+var p = new Person("Deity");
 console.log(p);
 ```
 
@@ -499,7 +491,7 @@ function foo() {
 }
 
 var obj = {
-  name: "why",
+  name: "Deity",
   foo: foo
 }
 
@@ -629,8 +621,8 @@ var obj = {
     var _this = this;
     setTimeout(function() {
       // 模拟获取到的数据
-      var res = ["abc", "cba", "nba"];
-      _this.data.push(...res);
+      var res = ["aaa", "bbb", "ccc"];
+      _this.data.push(...yep);
     }, 1000);
   }
 }
@@ -649,8 +641,8 @@ var obj = {
   getData: function() {
     setTimeout(() => {
       // 模拟获取到的数据
-      var res = ["abc", "cba", "nba"];
-      this.data.push(...res);
+      var res = ["aaa", "bbb", "ccc"];
+      this.data.push(...yep);
     }, 1000);
   }
 }

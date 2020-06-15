@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/test.js"></script>
+    <script>
+        /*
+            1.释放$的使用权
+                注意点: 释放操作必须在编写其它jQuery代码之前编写
+                        释放之后就不能再使用$,改为使用jQuery
+                jQuery原理.noConflict()
+            2.自定义一个访问符号
+        */
+        var nj = jQuery.noConflict()
+        nj(function () {
+            alert("hello lnj")
+        })
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        /*
+        window.onload = function (ev) {
+            // 1.通过原生的js入口函数可以拿到DOM元素
+            var images = document.getElementsByTagName("images")[0]
+            console.log(images)
+            // 2.通过原生的js入口函数可以拿到DOM元素的宽高
+            var width = window.getComputedStyle(images).width
+            console.log("onload", width)
+        }
+        */
+
+        /*
+            1.原生JS和jQuery入口函数的加载模式不同
+                原生JS会等到DOM元素加载完毕,并且图片也加载完毕才会执行
+                jQuery会等到DOM元素加载完毕,但不会等到图片也加载完毕就会执行
+        */ 
+    //    /*
+        $(document).ready(function () {
+            // 1.通过jQuery入口函数可以拿到DOM元素
+            var $images = $("images")
+            console.log($images)
+            // 2.通过jQuery入口函数不可以拿到DOM元素的宽高
+            var $width = $images.width()
+            console.log("ready", $width)
+        });
+        // */
+
+        /*
+            1.原生的JS如果编写了多个入口函数,后面编写的会覆盖前面编写的
+            2.jQuery中编写多个入口函数,后面的不会覆盖前面的
+        */ 
+
+        // window.onload = function (ev) {
+        //     alert("hello lnj1")
+        // }
+        // window.onload = function (ev) {
+        //     alert("hello lnj2")
+        // }
+
+        
+        // $(document).ready(function () {
+        //     alert("hello lnj1");
+        // });
+        // $(document).ready(function () {
+        //     alert("hello lnj2")
+        // })
+    </script>
+
+
+</head>
+<body>
+    <img src="https://img.alicdn.com/tfs/TB1P_MofwmTBuNjy1XbXXaMrVXa-190-140.gif" alt="">
+</body>
+</html>

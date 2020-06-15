@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        window.onload = function(ev){
+            // 1.利用原生的js查找DOM元素
+            var div1 = document.getElementsByTagName('div')[0]
+            console.log(div1)
+            var div2 = document.getElementsByClassName('box1')[0]
+            console.log(div2)
+            var div3 = document.getElementById('box2')
+            console.log(div3)
+            
+            //2.利用原生的js修改背景颜色
+            div1.style.backgroundColor = 'red'
+            div2.style.backgroundColor = 'yellow'
+            div3.style.backgroundColor = 'blue'
+        }
+
+        $(function () {
+            var $div1 = $("div")
+            console.log($div1)
+            var $div2 = $(".box1")
+            console.log($div2)
+            var $div3 = $("#box2")
+            console.log($div3)
+            $div1.css({
+                background: "red",
+                width: "200px",
+                height: "200px"
+            })
+            $div2.css({
+                background: "yellow"
+            })
+            $div3.css({
+                background: "blue"
+            })
+        })
+    </script>
+</head>
+<body>
+    <div></div>
+    <div class="box1"></div>
+    <div id="box2"></div>
+</body>
+</html>

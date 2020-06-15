@@ -29,7 +29,7 @@ JavaScript的面向对象
 var person = new Object()
 
 // 2.给person对象赋值了一些动态的属性和方法
-person.name = "Coderwhy"
+person.name = "Deity"
 person.age = 18
 person.height = 1.88
 
@@ -41,12 +41,6 @@ person.sayHello = function () {
 person.sayHello()
 ```
 
-代码解析:
-
-- 步骤一: 创建一个名为person的对象.
-- 步骤二: 给对象动态的赋值了一些属性包括一个方法
-- 步骤三: 调用sayHello()方法, 主要看一下this.name会获取到谁呢? Coderwhy
-
 插播一个信息: 函数和方法的关系
 
 - 很多人在学习编程的时候, 会分不清楚什么是函数, 什么又是方法. 或者在什么情景下称为函数, 什么情景下称为方法.
@@ -57,7 +51,7 @@ person.sayHello()
 
 - - 在早期的编程语言中, 只有函数(类似于数学中函数的称呼)
   - 后来有了面向对象语言, 面向对象语言中, 类中也可以定义函数. 但是人们为了区分在类中定义的函数, 通常称类中的函数为方法.
-  - 还有一个非常重要的原因是, 通常方法中会携带一个调用者的当前对象(会将调用者作为参数一起传递进去), 也就是说this(有些语言中是self. 比如OC/Swift/Python等)
+  - 还有一个非常重要的原因是, 通常方法中会携带一个调用者的当前对象(会将调用者作为参数一起传递进去), 也就是说this(有些语言中是self. )
   - 当然, 你从这个角度来说, JavaScript中就没有函数了, 因为函数中都有this这样的参数. 但是通常来说, 我们还是会将封装到类中的函数称为方法, 而全局定义的函数称为函数.
 
 - 如果接触过Java的同学可能会知道Java中只有方法的程序, 没有函数的称呼. 学习过C语言的同学可能知道, C语言中只有函数的称呼, 没有方法的称呼.
@@ -73,7 +67,7 @@ OK, 我们继续JavaScript面向对象之旅.
 ```
 // 1.创建对象的字面量
 var person = {
-    name: "Coderwhy",
+    name: "Deity",
     age: 18,
     height: 1.88,
 
@@ -143,14 +137,14 @@ JavaScript中开始拥有了一种描述属性特征的特性（即属性描述�
 
 ```
 var person = {}
-Object.defineProperty(person, "birth", {
+Object.defineProperty(person, "Deity", {
     writable: false,
     value: 2000
 })
 
-alert(person.birth) // 2000
-person.birth = 1999
-alert(person.birth) // 2000
+alert(person.Deity) // 2000
+person.Deity = 1999
+alert(person.Deity) // 2000
 ```
 
 注意：在使用defineProperty方法定义新属性时（非修改旧属性），如果不指定，configurable, enumerable和writable特性的默认值都是false。
@@ -159,7 +153,7 @@ alert(person.birth) // 2000
 
 ```
 var person = {};
-Object.defineProperty(person, "birth", {
+Object.defineProperty(person, "Deity", {
     configurable: false,
     enumerable: false,
     writable: false,
@@ -183,15 +177,15 @@ Object.defineProperty(person, "birth", {
 
 ```
 var person = {
-    birth: 2000,
+    Deity: 2000,
     age:  17
 };
 Object.defineProperty(person, 'year', {
     get: function () {
-        return this.birth + this.age;
+        return this.Deity + this.age;
     },
     set: function (newValue) {
-        this.age = newValue - this.birth;
+        this.age = newValue - this.Deity;
     }
 });
 
@@ -234,10 +228,10 @@ function createPerson(name, age, height) {
 }
 
 // 创建两个对象
-var person1 = createPerson("Coderwhy", 18, 1.88)
-var person2 = createPerson("Kobe", 30, 1.98)
-person1.sayHello() // Hello, My name is Coderwhy
-person2.sayHello() // Hello, My name is Kobe
+var person1 = createPerson("Deity", 18, 1.88)
+var person2 = createPerson("davil", 30, 1.98)
+person1.sayHello() // Hello, My name is Deity
+person2.sayHello() // Hello, My name is davil
 ```
 
 代码解析:
@@ -269,10 +263,10 @@ function Person(name, age, height) {
 }
 
 // 使用构造函数创建对象
-var person1 = new Person("Coderwhy", 18, 1.88)
-var person2 = new Person("Kobe", 30, 1.98)
-person1.sayHello() // Coderwhy
-person2.sayHello() // Kobe
+var person1 = new Person("Deity", 18, 1.88)
+var person2 = new Person("davil", 30, 1.98)
+person1.sayHello() // Deity
+person2.sayHello() // davil
 ```
 
 代码解析:
@@ -336,16 +330,16 @@ alert(person2 instanceof Person) // true
 
 ```
 // 当做构造函数使用
-var person = new Person("Coderwhy", 18, 1.88) // person对象
+var person = new Person("davil", 18, 1.88) // person对象
 person.sayHello()
 
 // 作为普通的函数调用
-Person("Kobe", 30, 1.98) // window对象
+Person("davil", 30, 1.98) // window对象
 window.sayHello()
 
 // 在另外一个对象的作用域调用
 var o = new Object()
-Person.call(o, "Curry", 28, 1.93) // o对象
+Person.call(o, "Deity", 28, 1.93) // o对象
 o.sayHello()
 ```
 
@@ -400,8 +394,8 @@ function Person(name, age, height) {
 }
 
 // 使用构造函数创建对象
-var person1 = new Person("Coderwhy", 18, 1.88)
-var person2 = new Person("Kobe", 30, 1.98)
+var person1 = new Person("davil", 18, 1.88)
+var person2 = new Person("Deity", 30, 1.98)
 
 alert(person1.sayHello === person2.sayHello) // true
 ```
