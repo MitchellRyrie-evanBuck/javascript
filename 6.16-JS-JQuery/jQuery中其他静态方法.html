@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery的其他静态方法</title>
+    <script src="js/jquery-1.12.4.js"></script>
+
+    <script>
+        /*
+        $.trim()
+        作用；出字符串两端的空格
+        参数：需要去除空格的字符串
+        返回值：去除空格之后的字符串
+        */
+
+        /*
+        var str="     qsl     "
+        var res=$.trim(str)
+        console.log("---"+str+"---")
+        console.log("---"+res+"---")
+        */
+
+        //真数组
+        var arr=[1,2,3,4]
+        //伪数组
+        var arrlike={0:1,1:3,2:5,3:7,4:9,length:5}
+        //对象
+        var obj={"name":"qsl",age:"21"}
+        //函数
+        var fn=function(){}
+        //window对象
+        var w=window
+        /*
+        $.isWindow()
+        作用:判断传入的对象时候是window对象
+        返回值:true/false
+        */
+
+        var res=$.isWindow(w)
+        //console.log(res)//true
+
+        /*
+        $.isArray()
+        作用:判断传入的对象是否是真数组
+        返回值:true/false
+        */
+        var res=$.isArray(w)
+        console.log(res)
+
+        /*$.isFunction()
+        作用:判断传入的对象是否是函数
+        返回值:true/false
+        注意点:
+        jQuery框架本质上是一个函数
+        */
+        var res=$.isFunction(jQuery)
+        console.log(res)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

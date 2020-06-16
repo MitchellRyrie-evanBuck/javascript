@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>静态方法和实例方法</title>
+    <script>
+        //定义一个类
+        function AClass(){
+
+        }
+        //2.给这个类添加一个静态方法
+        //直接添加给类的就是静态方法
+        AClass.staticMethod=function(){
+            alert("staticMethod")
+        }
+        //静态方法通过类名调用
+        AClass.staticMethod()
+        //3.给这个类添加一个实例方法
+        AClass.prototype.instanceMethod=function(){
+            alert("instanceMethod")
+        }
+
+        //实例方法通过类的实例调用
+        //创建一个实例(创建一个对象)
+        var a=new AClass()
+        //通过实例调用实例方法
+        a.instanceMethod()
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

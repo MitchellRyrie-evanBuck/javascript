@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery核心函数</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        //$()就代表调用jQuery的核心函数
+
+        //1.接收一个函数
+        $(function(){
+            alert("hello world")
+            //2.接收一个字符串
+            //2.1接收一个字符串选择器
+            //返回一个jQuery对象，对象保存了找到的DOM元素
+            var $box1=$(".box1")
+            var $box2=$("#box2")
+            //2.2接收一个代码片段
+            //返回一个jQuery对象，对象中保存了创建DOM元素
+            var $p= $("<p>我是段落</p>")
+            console.log($p)
+            $box1.append($p)
+            //3.接受一个DOM函数
+            //会被包装成一个jQuery对象返回给我们
+            var span=document.getElementsByTagName("span")[0]
+            console.log(span)
+        })
+
+        
+    </script>
+</head>
+<body>
+    <div class="box1"></div>
+    <div id="box2"></div>
+    <span>我是span</span>
+</body>
+</html>

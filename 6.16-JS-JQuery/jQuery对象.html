@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery对象</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+        /*
+            1.什么是jQuery对象
+            jQuery对象是一个伪数组
+
+            2.什么是伪数组？
+            有0到length-1的属性，而且有length属性
+        */
+        var $div=$("div")
+        console.log($div)
+
+        var arr=[1,2,3]
+        console.log(arr)
+        })
+        
+    </script>
+</head>
+<body>
+    <div>div1</div>
+    <div>div2</div>
+    <div>div3</div>
+</body>
+</html>

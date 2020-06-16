@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery的prop方法</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function(){
+            /*
+            1.prop方法
+            特点和attr方法一致
+            2.removeProp方法
+            特点和removeAttr方法一致
+            */
+            $("span").eq(0).prop("demo","ljj")
+            $("span").eq(1).prop("demo","qsl")
+            console.log($("span").prop("demo"))
+
+            $("span").removeProp('demo')
+
+            /*
+            注意点:
+            prop方法不仅能够操作属性，他还能操作属性节点
+            */
+            //console.log($("span").prop("class"))
+            //$("span").prop("class","box")
+        })
+    </script>
+</head>
+<body>
+    <span class="span1" name="qsl"></span>
+    <span class="span2" name="ljj"></span>
+</body>
+</html>
