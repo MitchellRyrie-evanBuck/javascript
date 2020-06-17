@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .one{
+            width: 100px;
+            height: 100px;
+            background: red;
+        }
+        .two{
+            width: 500px;
+            height: 10px;
+            background: blue;
+        }
+    </style>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            // 编写jQuery相关代码
+            $("button").eq(0).click(function () {
+                /*
+                在jQuery的{}中可以同时修改多个属性, 多个属性的动画也会同时执行
+                */
+                /*
+                $(".one").animate({
+                    width: 500
+                    // height: 500
+                }, 1000)
+
+                $(".one").animate({
+                    height: 500
+                }, 1000)
+                */
+                /*
+                delay方法的作用就是用于告诉系统延迟时长
+                */
+                /*
+                $(".one").animate({
+                    width: 500
+                    // height: 500
+                }, 1000).delay(2000).animate({
+                    height: 500
+                }, 1000)
+                */
+                $(".one").animate({
+                    width: 500
+                }, 1000)
+                $(".one").animate({
+                    height: 500
+                }, 1000)
+
+                $(".one").animate({
+                    width: 100
+                }, 1000)
+                $(".one").animate({
+                    height: 100
+                }, 1000)
+            })
+            $("button").eq(1).click(function () {
+                // 立即停止当前动画, 继续执行后续的动画
+                // $("div").stop()
+                // $("div").stop(false)
+                // $("div").stop(false, false)
+
+                // 立即停止当前和后续所有的动画
+                // $("div").stop(true)
+                // $("div").stop(true, false)
+
+                // 立即完成当前的, 继续执行后续动画
+                // $("div").stop(false, true)
+
+                // 立即完成当前的, 并且停止后续所有的
+                $("div").stop(true, true)
+            })
+        })
+    </script>
+</head>
+<body>
+    <button>开始动画</button>
+    <button>停止动画</button>
+    <div class="one" style="display: none"></div>
+    <div class="two"></div>
+</body>
+</html>

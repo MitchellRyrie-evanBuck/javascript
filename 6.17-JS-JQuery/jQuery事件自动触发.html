@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .father{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+    </style>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            // 编写jQuery相关代码
+            $(".son").click(function (event) {
+                alert("son")
+            })
+
+            $(".father").click(function () {
+                alert("father")
+            })
+            // $(".father").trigger("click")
+            // $(".father").triggerHandler("click")
+
+            /*
+            trigger: 如果利用trigger自动触发事件,会触发事件冒泡
+            triggerHandler: 如果利用triggerHandler自动触发事件, 不会触发事件冒泡
+            */
+            // $(".son").trigger("click")
+            // $(".son").triggerHandler("click")
+
+            $("input[type='submit']").click(function () {
+                alert("submit")
+            })
+
+            /*
+            trigger: 如果利用trigger自动触发事件,会触发默认行为
+            triggerHandler: 如果利用triggerHandler自动触发事件, 不会触发默认行为
+            */
+            $("input[type='submit']").trigger("click")
+            $("input[type='submit']").triggerHandler("click")
+
+            $("span").click(function () {
+                alert("a")
+            })
+            // $("a").triggerHandler("click")
+            $("span").trigger("click")
+        })
+    </script>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <a href="http://www.baidu.com"><span>注册</span></a>
+    <form action="http://www.taobao.com">
+        <input type="text">
+        <input type="submit">
+    </form>
+</body>
+</html>

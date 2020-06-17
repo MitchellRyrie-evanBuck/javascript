@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .father{
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background: blue;
+        }
+    </style>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            // 编写jQuery相关代码
+            /*
+            1.什么是事件冒泡?
+            2.如何阻止事件冒泡
+            3.什么是默认行为?
+            4.如何阻止默认行为
+            */
+            /*
+            $(".son").click(function (event) {
+                alert("son")
+                // return false
+                event.stopPropagation()
+            })
+            $(".father").click(function () {
+                alert("father")
+            })
+            */
+            $("a").click(function (event) {
+                alert("弹出注册框")
+                // return false
+                event.preventDefault()
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <a href="http://www.baidu.com">注册</a>
+    <form action="http://www.taobao.com">
+        <input type="text">
+        <input type="submit">
+    </form>
+</body>
+</html>

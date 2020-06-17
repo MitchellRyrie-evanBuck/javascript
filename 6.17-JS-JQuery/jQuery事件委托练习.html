@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        .mask{
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .login{
+            width: 521px;
+            height: 292px;
+            margin: 100px auto;
+            position: relative;
+        }
+        .login>span{
+            width: 50px;
+            height: 50px;
+            /*background: red;*/
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            // 编写jQuery相关代码
+            $("a").click(function () {
+                var $mask = $("<div class=\"mask\">\n" +
+                    "    <div class=\"login\">\n" +
+                    "        <img src=\"images/login.png\" alt=\"\">\n" +
+                    "        <span></span>\n" +
+                    "    </div>\n" +
+                    "</div>")
+                // 添加蒙版
+                $("body").append($mask);
+                $("body").delegate(".login>span", "click", function () {
+                    // 移除蒙版
+                    $mask.remove()
+                })
+                return false
+            })
+        })
+    </script>
+</head>
+<body>
+    <!-- <div class="mask">
+        <div class="login">
+            <images src="images/login.png" alt="">
+            <span></span>
+        </div>
+    </div> -->
+    <a href="http://www.baidu.com">点击登录</a>
+    <div><img src="https://s1.ax1x.com/2020/06/17/NZZMdJ.jpg" width="30%" height="30%"></div>
+</body>
+</html>
