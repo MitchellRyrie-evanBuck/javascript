@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            /*
+            内部插入
+            append(content|fn)
+            appendTo(content)
+            会将元素添加到指定元素内部的最后
+
+            prepend(content|fn)
+            prependTo(content)
+            会将元素添加到指定元素内部的最前面
+
+
+            外部插入
+            after(content|fn)
+            insertAfter(content)
+            会将元素添加到指定元素外部的后面
+
+            before(content|fn)
+            insertBefore(content)
+            会将元素添加到指定元素外部的前面
+            */
+            $("button").click(function () {
+                // 1.创建一个节点
+                var $li = $("<li>新增的li</li>")
+                // 2.添加节点
+                // $("ul").append($li)
+                // $("ul").prepend($li)
+
+                // $li.appendTo("ul")
+                // $li.prependTo("ul")
+
+
+                // $("ul").after($li)
+                $("ul").before($li)
+                // $li.insertAfter("ul")
+            })
+        })
+    </script>
+</head>
+<body>
+    <button>添加节点</button>
+    <ul>
+        <li>我是第1个li</li>
+        <li>我是第2个li</li>
+        <li>我是第3个li</li>
+    </ul>
+    <div>我是div</div>
+</body>
+</html>
