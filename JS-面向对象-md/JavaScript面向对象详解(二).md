@@ -23,7 +23,7 @@
 function Person() {}
 
 // 通过原型对象来设置一些属性和值
-Person.prototype.name = "Coderwhy"
+Person.prototype.name = "Deity"
 Person.prototype.age = 18
 Person.prototype.height = 1.88
 Person.prototype.sayHello = function () {
@@ -34,8 +34,8 @@ Person.prototype.sayHello = function () {
 var person1 = new Person()
 var person2 = new Person()
 
-person1.sayHello() // Coderwhy
-person2.sayHello() // Coderwhy
+person1.sayHello() // Deity
+person2.sayHello() // Deity
 ```
 
 代码解析:
@@ -102,13 +102,13 @@ console.log(person1.__proto__ === Person.prototype); // true
 - 通过上面的图, 自己再来理解一下吧.
 
 ```
-person1.sayHello() // Coderwhy
-person2.sayHello() // Coderwhy
+person1.sayHello() // Deity
+person2.sayHello() // Deity
 
-person1.__proto__.name = "Kobe"
+person1.__proto__.name = "deavil"
 
-person1.sayHello() // Kobe
-person2.sayHello() // Kobe
+person1.sayHello() // deavil
+person2.sayHello() // deavil
 ```
 
 但是要注意下面的情况:
@@ -121,13 +121,13 @@ person2.sayHello() // Kobe
 var person1 = new Person()
 var person2 = new Person()
 
-person1.sayHello() // Coderwhy
-person2.sayHello() // Coderwhy
+person1.sayHello() // Deity
+person2.sayHello() // Deity
 
 // 给person1实例添加属性
 person1.name = "Kobe"
-person1.sayHello() // Kobe, 来自实例
-person2.sayHello() // Coderwhy, 来自原型
+person1.sayHello() // deavil, 来自实例
+person2.sayHello() // Deity, 来自原型
 ```
 
 通过hasOwnProperty判断属性属于实例还是原型.
@@ -153,7 +153,7 @@ function Person() {}
 
 // 重写Person的原型属性
 Person.prototype = {
-    name: "Coderwhy",
+    name: "Deity",
     age: 18,
     height: 1.88,
     
@@ -189,7 +189,7 @@ function Person() {}
 // 重写Person的原型属性
 Person.prototype = {
     constructor: Person,
-    name: "Coderwhy",
+    name: "Deity",
     age: 18,
     height: 1.88,
 
@@ -218,7 +218,7 @@ function Person() {}
 
 // 重写Person的原型属性
 Person.prototype = {
-    name: "Coderwhy",
+    name: "Deity",
     age: 18,
     height: 1.88,
 
@@ -302,7 +302,7 @@ function Person() {}
 // 设置Person原型
 Person.prototype = {
     constructor: Person,
-    name: "Coderwhy",
+    name: "Deity",
     age: 18,
     height: 1.88,
     hobby: ["Basketball", "Football"],
@@ -360,8 +360,8 @@ Person.prototype = {
 }
 
 // 创建对象
-var person1 = new Person("Coderwhy", 18, 1.88)
-var person2 = new Person("Kobe", 30, 1.98)
+var person1 = new Person("Deity", 18, 1.88)
+var person2 = new Person("devil", 30, 1.98)
 
 // 测试是否共享了函数
 alert(person1.sayHello == person2.sayHello) // true

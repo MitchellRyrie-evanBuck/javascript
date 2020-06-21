@@ -4,12 +4,6 @@
 
 ### 1.1. 原型式继承的思想
 
-原型式继承的渊源
-
-- 这种模式要从道格拉斯·克罗克福德（Douglas Crockford, 著名的前端大师, JSON的创立者）在2006年写的一篇文章说起: Prototypal Inheritance in JavaScript(在JS中使用原型式继承)
-- 在这篇文章中, 它介绍了一种继承方法, 而且这种继承方法不是通过构造函数来实现的.
-- 为了理解这种方式, 我们先再次回顾一下JavaScript想实现继承的目的: 重复利用另外一个对象的属性和方法.
-
 原型式继承的核心函数:
 
 ```
@@ -35,19 +29,19 @@ function object(o) {
 ```
 // 使用原生式继承
 var person = {
-    name: "Coderwhy",
+    name: "Deity",
     colors: ["red", "green"]
 }
 
 // 通过person去创建另外一个对象
 var person1 = object(person)
-person1.name = "Kobe"
+person1.name = "devil"
 person1.colors.push("blue")
 
-alert(person1.name) // Kobe
+alert(person1.name) // devil
 alert(person1.colors) // red,green,blue
 
-alert(person.name) // Coderwhy
+alert(person.name) // Deity
 alert(person.colors) // red,green,blue
 ```
 
@@ -66,19 +60,19 @@ alert(person.colors) // red,green,blue
 ```
 // 使用原生式继承
 var person = {
-    name: "Coderwhy",
+    name: "Deity",
     colors: ["red", "green"]
 }
 
 // 通过person去创建另外一个对象
 var person1 = Object.create(person)
-person1.name = "Kobe"
+person1.name = "devil"
 person1.colors.push("blue")
 
-alert(person1.name) // Kobe
+alert(person1.name) // devil
 alert(person1.colors) // red,green,blue
 
-alert(person.name) // Coderwhy
+alert(person.name) // Deity
 alert(person.colors) // red,green,blue
 ```
 
@@ -90,22 +84,22 @@ Object.create()还可以传入第二个参数:
 ```
 // 使用原型式继承
 var person = {
-    name: "Coderwhy",
+    name: "Deity",
     colors: ["red", "green"]
 }
 
 // 通过person去创建另外一个对象
 var person1 = Object.create(person, {
     name: {
-        value: "Kobe"
+        value: "devil"
     }
 })
 person1.colors.push("blue")
 
-alert(person1.name) // Kobe
+alert(person1.name) // devil
 alert(person1.colors) // red,green,blue
 
-alert(person.name) // Coderwhy
+alert(person.name) // Deity
 alert(person.colors) // red,green,blue
 ```
 
@@ -153,7 +147,7 @@ function createAnother(original) {
 ```
 // person对象
 var person = {
-    name: "Coderwhy",
+    name: "Deity",
     colors: ["red", "green"]
 }
 

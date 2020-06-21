@@ -272,7 +272,7 @@ function Person() {
     Animal.call(this)
 
     // 给自己的属性赋值
-    this.name = "Coderwhy"
+    this.name = "deity"
 }
 
 // 创建Person对象
@@ -307,7 +307,7 @@ function Person(name, age) {
 }
 
 // 创建Person对象
-var person = new Person("Coderwhy", 18)
+var person = new Person("deity", 18)
 alert(person.name)
 alert(person.age)
 ```
@@ -371,12 +371,12 @@ Person.prototype.personFunction = function () {
 
 // 2.验证和使用的代码
 // 2.1.创建Person对象
-var person1 = new Person("Coderwhy", 18)
-var person2 = new Person("Kobe", 30)
+var person1 = new Person("deity", 18)
+var person2 = new Person("devil", 30)
 
 // 2.2.验证属性
-alert(person1.name + "-" + person1.age) // Coderwhy,18
-alert(person2.name + "-" + person2.age) // Kobe,30
+alert(person1.name + "-" + person1.age) // deity,18
+alert(person2.name + "-" + person2.age) // devil,30
 
 // 2.3.验证方法的调用
 person1.animalFunction() // Hello Animal
