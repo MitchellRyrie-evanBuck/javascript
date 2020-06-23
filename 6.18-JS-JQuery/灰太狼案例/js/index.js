@@ -1,7 +1,7 @@
 $(function(){
     //  1. 监听游戏规则的点击
     $(".rules").click(function(){
-        $("rule").stop().fadeIn(100);
+        $(".rule").stop().fadeIn(100);
     });
 
     // 2.监听关闭按钮得点击
@@ -16,8 +16,10 @@ $(function(){
         progressHandler();
         // 调用处理灰太狼动画的方法
         startWolfAnimation()
-
+        // 开始播放音乐按钮
+        startmusic()
     })
+
 
     // 4. 监听重新开始按钮
     $(".reStart").click(function(){
@@ -27,6 +29,8 @@ $(function(){
         startWolfAnimation()
         // 重新开始时分数改为0分
         $(".score").text(0)
+        // 开始时音乐开始播放
+        startmusic()
     })
 
     // 定义一个专门处理进度条的方法
@@ -41,7 +45,7 @@ $(function(){
             // 拿到当前进度条的宽度
             var progressWidth = $(".progress").width();
             // 减少当前的宽度
-            progressWidth -= 5;
+            progressWidth -= 3;
             // 重新给进度条赋值
             $(".progress").css({
                 width : progressWidth
@@ -54,11 +58,27 @@ $(function(){
                 $(".mask").stop().fadeIn(100)
                 // 停止灰太狼动画
                 stopWolfAnimaton()
+                // 停止背景音乐
+                stopmusic()
             }
         },300);
     }
 
+     // 将音乐背景添加上
+    function startmusic(){
+        var $music = $("<audio src='./graywolf.mp3' loop='loop' autoplay='autoplay'></audio>")
+        $(".music").append($music)
+    }
+
+    // 停止音乐
+    function stopmusic(){
+        // 清空内容
+        $(".music").empty()
+    }
+
+    // 定义一个定时器
     var wolfTimer
+
     // 定义一个专门处理灰太狼动画的方法
     function startWolfAnimation(){
         // 定义两个数组保存所有位置
@@ -70,7 +90,7 @@ $(function(){
         "./images/x8.png","./images/x9.png",];
         // 定义数组 保存可能出现的位置
 
-
+        // 位置数组
         var arrPos = [
             {left : "100px" , top : "115px"},
             {left : "20px" , top : "160px"},
@@ -101,8 +121,10 @@ $(function(){
         window.wolfIndexEnd = 5;
         wolfTimer = setInterval(function(){
             if(wolfIndex > wolfIndexEnd){
+                // 照片移除
                 $wolfImage.remove();
                 clearInterval(wolfTimer);
+                // 调用自己进行随机照片
                 startWolfAnimation()
             }
             $wolfImage.attr("src",wolfType[wolfIndex]);
@@ -111,10 +133,11 @@ $(function(){
 
         // 将图片添加上界面上
         $(".container").append($wolfImage);
-        // 调用处理游戏规则的方法
+        // 调用处理游戏规则的方法  -照片传出
         gameRules($wolfImage);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
     }
 
+    // 点击事件进行加减分数   传进来的是一张图片
     function gameRules($wolfImage){
         $wolfImage.one("click",function(){
             // 修改索引
@@ -123,7 +146,7 @@ $(function(){
 
             // 拿到当前点击图片的地址
             var $src = $(this).attr("src");
-            // 根据图片地址判断是否是灰太狼
+            // 根据图片地址判断是否是灰太狼  
             var flag = $src.indexOf("h") >= 0;
 
             // 根据点击图片类型增减分数
@@ -135,7 +158,7 @@ $(function(){
 
         })
     }
-
+    // 移除照片 清空定时器
     function stopWolfAnimaton(){
         $(".wolfImage").remove();
         clearInterval(wolfTimer);
