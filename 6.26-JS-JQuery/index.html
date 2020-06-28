@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QQ音乐</title>
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-1.12.4.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/lyric.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+    <!-- 首部 -->
+    <div class="header">
+        <!-- 左边--logo -->
+        <h1 class="logo"><a href="#"></a></h1>
+        <!-- 右边--登录与设置 -->
+        <ul class="register">
+            <div><span>QQ音乐，千万高品质曲库尽享</span>
+                <a href="#">客户端下载</a>
+                </div>
+                <span>登录</span>
+                <span>设置</span>
+        </ul>
+    </div>
+
+    <!-- 中间区域 -->
+    <div class="content">
+        <!-- 版型 -->
+        <div class="content_in">
+            <!-- 左边内容 -->
+            <div class="content_left">
+                <!-- 左上部分 -->
+                <div class="content_toolbar">
+                    <!-- 布局文字和图片 -->
+                    <span><i></i>收藏</span>
+                    <span><i></i>添加到</span>
+                    <span><i></i>下载</span>
+                    <span><i></i>删除</span>
+                    <span id="clear"><i></i>清空列表</span>
+                </div>
+                
+                <!-- 左下部分 -->
+                <div class="content_list" data-mcs-theme="minimal-dark">
+                    <ul>
+                        <!-- 每一个歌曲条目 -->
+                        <li class="list_title">
+                            <div class="list_check"><i></i></div>
+                            <div class="list_number"></div>
+                            <div class="list_name">歌曲</div>
+                            <div class="list_singer">歌手</div>
+                            <div class="list_time">时长</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 专辑和歌词部分 -->
+            <div class="content_right">
+                <!-- 右上内容 -->
+                <div class="song_info">
+                    <!-- 图片 -->
+                    <a href="javascript:;" class="song_info_pic">
+                        <img src="https://s1.ax1x.com/2020/06/23/NUqDZ6.jpg" alt="">
+                    </a>
+                    <div class="song_info_name">歌曲名称:
+                        <a href="javascript:;">111</a>
+                    </div>
+                    <div class="song_info_singer">歌手名:
+                        <a href="javascript:;">222</a>
+                    </div>
+                    <div class="song_info_ablum">专辑名:
+                        <a href="javascript:;">333</a>
+                    </div>
+                </div>
+                <!-- 右下内容 -->
+                <div class="song_lyric_container">
+                    <ul class="song_lyric">
+                        <li >第一条歌词</li>
+                        <li class="cur">第二条歌词</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 纯净模式 -->
+    <div class="clearMode  hide1">
+        <!-- 歌词列表 -->
+        <ul class="song_lyric">
+            <li >第一条歌词</li>
+            <li class="cur">第二条歌词</li>
+        </ul>
+    </div>
+    <!-- 底部 -->
+    <div class="footer">
+        <div class="footer_in">
+            <a href="javascript:;" class="music_pre"></a>
+            <a href="javascript:;" class="music_play"></a>
+            <a href="javascript:;" class="music_next"></a>
+            <div class="music_progress_info">
+                <div class="music_progress_top">
+                    <span class="music_progress_name">111</span>
+                    <span class="music_progress_time">00:00 / 05:23</span>
+                </div>
+                <div class="music_progress_bar">
+                    <!-- 进度条线 -->
+                    <div class="music_progress_line">
+                        <!-- 小圆点 -->
+                        <div class="music_progress_dot"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 下面小图标 -->
+            <a href="javascript:;" class="music_mode"></a>
+            <a href="javascript:;" class="music_fav"></a>
+            <a href="javascript:;" class="music_down"></a>
+            <a href="javascript:;" class="music_comment"></a>
+            <a href="javascript:;" class="music_only"></a>
+            <div class="music_voice_info">
+                <a href="javascript:;" class="music_voice_icon"></a>
+                <div class="music_voice_bar">
+                    <div class="music_voice_line">
+                        <div class="music_voice_dot"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 背景 -->
+    <div class="mask_bg"></div>
+    <div class="mask"></div>
+    <audio src=""></audio>
+</body>
+</html>

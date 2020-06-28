@@ -2,7 +2,9 @@ $(function () {
     // 0.自定义滚动条
     $(".content_list").mCustomScrollbar();
 
+    // 获取音乐标签
     var $audio = $("audio");
+    // 实例化对象
     var player = new Player($audio);
     var progress;
     var voiceProgress;
@@ -18,8 +20,11 @@ $(function () {
                 player.musicList = data;
                 // 3.1遍历获取到的数据, 创建每一条音乐
                 var $musicList = $(".content_list ul");
+        
                 $.each(data, function (index, ele) {
+                    // 传出的 索引 音乐信息
                     var $item = crateMusicItem(index, ele);
+                    // 将音乐加入到列表中
                     $musicList.append($item);
                 });
                 initMusicInfo(data[0]);
@@ -42,6 +47,7 @@ $(function () {
         var $musicProgressTime = $(".music_progress_time");
         var $musicBg = $(".mask_bg");
 
+    
         // 给获取到的元素赋值
         $musicImage.attr("src", music.cover);
         $musicName.text(music.name);
@@ -54,6 +60,7 @@ $(function () {
 
     // 3.初始化歌词信息
     function initMusicLyric(music){
+        // 实例化一个对象 将歌词传进去
         lyric = new Lyric(music.link_lrc);
         var $lryicContainer = $(".song_lyric");
         // 清空上一首音乐的歌词
@@ -61,6 +68,7 @@ $(function () {
         lyric.loadLyric(function () {
             // 创建歌词列表
             $.each(lyric.lyrics, function (index, ele) {
+                // ele --- 歌词信息
                 var $item = $("<li>"+ele+"</li>");
                 $lryicContainer.append($item);
             });
@@ -76,6 +84,7 @@ $(function () {
         progress = Progress($progressBar,$progressLine,$progressDot);
         progress.progressClick(function (value) {
             player.musicSeekTo(value);
+    
         });
         progress.progressMove(function (value) {
             player.musicSeekTo(value);
@@ -162,6 +171,7 @@ $(function () {
             if(player.currentIndex == -1){
                 // 没有播放过音乐
                 $(".list_music").eq(0).find(".list_menu_play").trigger("click");
+                
             }else{
                 // 已经播放过音乐
                 $(".list_music").eq(player.currentIndex).find(".list_menu_play").trigger("click");
@@ -199,16 +209,20 @@ $(function () {
         });
 
         // 8.监听播放的进度
+        //   currentTime----当前秒数  duration -- 总时长   timeStr ---日期格式       
         player.musicTimeUpdate(function (currentTime, duration, timeStr) {
             // 同步时间
             $(".music_progress_time").text(timeStr);
             // 同步进度条
             // 计算播放比例
             var value = currentTime / duration * 100;
+
             progress.setProgress(value);
             // 实现歌词同步
             var index = lyric.currentIndex(currentTime);
+            // index 为当前歌词的索引
             var $item = $(".song_lyric li").eq(index);
+            // 设置类名 将其变为绿色
             $item.addClass("cur");
             $item.siblings().removeClass("cur");
 
@@ -234,6 +248,9 @@ $(function () {
         });
     }
 
+    // 点击小红心
+
+
     // 定义一个方法创建一条音乐
     function crateMusicItem(index, music) {
         var $item = $("" +
@@ -253,7 +270,8 @@ $(function () {
             "     <span>"+music.time+"</span>\n" +
             "     <a href=\"javascript:;\" title=\"删除\" class='list_menu_del'></a>\n" +
             "</div>\n" +
-        "</li>");
+        "</li>"
+        );
 
         $item.get(0).index = index;
         $item.get(0).music = music;

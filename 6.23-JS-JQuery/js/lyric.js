@@ -7,8 +7,8 @@
         init: function (path) {
             this.path = path;
         },
-        times: [],
-        lyrics: [],
+        // 用来存储歌词时间，与歌词
+        times: [], lyrics: [],
         index: -1,
         loadLyric: function (callBack) {
             var $this = this;
@@ -17,6 +17,7 @@
                 dataType: "text",
                 success: function (data) {
                     // console.log(data);
+                    //  data 携带时间的歌词
                     $this.parseLyric(data);
                     callBack();
                 },
@@ -38,19 +39,21 @@
             $.each(array, function (index, ele) {
                 // 处理歌词
                 var lrc = ele.split("]")[1];
+                // console.log(lrc)
                 // 排除空字符串(没有歌词的)
                 if(lrc.length == 1) return true;
                 $this.lyrics.push(lrc);
 
-                // 处理时间
+                // 处理时间 -----exec() 方法用于检索字符串中的正则表达式的匹配。
                 var res = timeReg.exec(ele);
-                // console.log(res);
                 if(res == null) return true;
-                var timeStr = res[1]; // 00:00.92
+                var timeStr = res[1]; // 00:00.92 ----获取到的是时间
                 var res2 = timeStr.split(":");
                 var min = parseInt(res2[0]) * 60;
                 var sec = parseFloat(res2[1]);
                 var time = parseFloat(Number(min + sec).toFixed(2)) ;
+                // time 为总时间 
+                
                 $this.times.push(time);
             });
             // console.log($this.times + "");

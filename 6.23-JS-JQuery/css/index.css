@@ -145,7 +145,7 @@ html,body{
 /* 左下部分 */
 .content_left .content_list{
     width: 100%;
-    height: 420px;
+    height: 550px;
     /* background: plum; */
     overflow: auto;
 }
@@ -301,7 +301,7 @@ html,body{
 /* 右下歌词 */
 .content_right .song_lyric_container{
     margin-top: 30px;
-    height: 150px;
+    height: 300px;
     overflow: hidden;
 }
 .content_right .song_lyric{
@@ -525,5 +525,5 @@ html,body{
     background: rgba(0,0,0,0.35);
 }
 ._mCS_1 .mCSB_scrollTools .mCSB_dragger_bar{
-    width:8px;
+    width:5px;
 }

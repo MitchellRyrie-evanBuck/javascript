@@ -13,6 +13,7 @@
         progressClick: function (callBack) {
             var $this = this; // 此时此刻的this是progress
             // 监听背景的点击
+
             this.$progressBar.click(function (event) {
                 // 获取背景距离窗口默认的位置
                 var normalLeft = $(this).offset().left;
@@ -56,8 +57,10 @@
                 callBack(value);
             });
         },
+                //设置进度条长度的方法
         setProgress: function (value) {
             if(this.isMove) return;
+            // 小圆点播放到的比例
             if(value < 0 || value > 100) return;
             this.$progressLine.css({
                 width: value+"%"

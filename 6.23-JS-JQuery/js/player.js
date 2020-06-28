@@ -9,7 +9,9 @@
             this.$audio = $audio;
             this.audio = $audio.get(0);
         },
+        // 正在播放音乐的序号
         currentIndex: -1, // 4  3
+        // 播放音乐
         playMusic: function (index, music) {
             // 判断是否是同一首音乐
             if(this.currentIndex == index){
@@ -26,6 +28,7 @@
                 this.currentIndex = index;
             }
         },
+        // 上一首
         preIndex: function () {
             var index = this.currentIndex - 1;
             if(index < 0){
@@ -33,6 +36,7 @@
             }
             return index;
         },
+        // 下一首
         nextIndex: function () {
             var index = this.currentIndex + 1;
             if(index > this.musicList.length - 1){
@@ -40,6 +44,7 @@
             }
             return index;
         },
+        // 传进来的是点击删除的索引
         changeMusic: function (index) {
             // 删除对应的数据
             this.musicList.splice(index, 1);
@@ -49,9 +54,11 @@
                 this.currentIndex = this.currentIndex - 1;
             }
         },
+        // 格式化时间
         musicTimeUpdate: function (callBack) {
             var $this = this;
             this.$audio.on("timeupdate", function () {
+                    //   currentTime----当前秒数  duration -- 总时长    
                 var duration = $this.audio.duration;
                 var currentTime = $this.audio.currentTime;
                 var timeStr = $this.formatDate(currentTime, duration);
@@ -80,8 +87,10 @@
         },
         musicSeekTo: function (value) {
             if(isNaN(value)) return;
+                //已播放的时长 = 总时长*进度条计算的百分比
             this.audio.currentTime = this.audio.duration * value;
         },
+          //调整播放音量
         musicVoiceSeekTo: function (value) {
             if(isNaN(value)) return;
             if(value <0 || value > 1) return;
