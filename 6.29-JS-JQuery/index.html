@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="./jquery-1.12.4.js"></script> -->
+    <script src="./index.js"></script>
+  </head>
+  <body>
+    <div><p>1</p></div><div><p>2</p></div>
+    <div class="zbc">regance</div>
+    <div class="zbc">regance</div>
+    <div class="zbc">regance</div>
+    <div class="zbc">regance</div>
+    <script>
+      // console.log($(" "))
+      // console.log($(undefined))
+      // console.log($(false))
+      // console.log($(NaN))
+      // console.log($(0))
+      // console.log($(null))
+
+      // 传入HTML片段
+
+      // console.log($("<p>1</p><p>2</p>"));
+      // console.log($("   <div><p>1</p></div><div><p>2</p></div>   "));
+
+      // console.log($(".zbc"));
+
+      // 对象
+      function person(){};
+      console.log($(new person()))
+
+      // 数组
+      console.log($([1,2,3,4,5,6]))
+
+      // 伪数组
+      var like = {0:"deity",1:"devail",2:"timeless",length:3}
+      console.log($(like))
+
+      $(window)
+
+      $(function(){
+        var res = document.querySelectorAll("div")
+        console.log(res)
+      })
+    </script>
+  </body>
+</html>
