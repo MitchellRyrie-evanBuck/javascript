@@ -29,22 +29,62 @@
       // console.log($(".zbc"));
 
       // 对象
-      function person(){};
-      console.log($(new person()))
+      // function person(){};
+      // console.log($(new person()))
 
-      // 数组
-      console.log($([1,2,3,4,5,6]))
+      // // 数组
+      // console.log($([1,2,3,4,5,6]))
 
-      // 伪数组
-      var like = {0:"deity",1:"devail",2:"timeless",length:3}
-      console.log($(like))
+      // // 伪数组
+      // var like = {0:"deity",1:"devail",2:"timeless",length:3}
+      // console.log($(like))
 
-      $(window)
+      // $(window)
 
-      $(function(){
-        var res = document.querySelectorAll("div")
-        console.log(res)
-      })
+      // $(function(){
+      //   var res = document.querySelectorAll("div")
+      //   console.log(res)
+      // })
+
+      $(function () {
+        // var res = $("div")
+        // console.log(res)
+
+        // console.log(res.first())
+
+        // var arr = [1, 3, 5, 7, 9];
+        //     var obj1 = {0:"lnj",1:"333",2:"male",length:3};
+        //     var obj2 = {"name":"lnj","age":"33"};
+
+        //     njQuery.each(arr, function (key, value) {
+        //         if(key === 2){
+        //             return false;
+        //         }
+        //         console.log(key, value);
+        //         // console.log(this);
+        //     });
+        //     njQuery.each(obj1, function (key, value) {
+        //         console.log(key, value);
+        //         console.log(this);
+        //     });
+
+            // $(arr).each(function (key, value) {
+            //     console.log(key, value);
+            //     console.log(this);
+            // });
+
+            var arr = [1, 3, 5, 7, 9];
+            var obj1 = {0:"lnj",1:"333",2:"male",length:3};
+            var obj2 = {"name":"lnj","age":"33"};
+            var res = njQuery.map(arr, function (value, key) {
+                console.log(value, key);
+                if(key === 2){
+                    return value;
+                }
+            });
+            console.log(res);
+        });
+
     </script>
   </body>
 </html>

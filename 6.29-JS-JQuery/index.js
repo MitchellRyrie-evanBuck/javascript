@@ -14,6 +14,42 @@
     push : [].push,
     sort : [].sort,
     splice : [].splice,
+    toArray : function(){
+      return [].slice.call(this)
+    },
+    get : function (num){
+      // 没有传递参数
+      if(arguments.length === 0){
+        return this.toArray()
+      }
+      // 传递不是负数
+      else if(num > 0){
+        return this[num]
+      }
+      // 传递负数
+      else{
+        return this[this.length + num]
+      }
+    },
+    eq : function(num){
+      // 没有传递参数
+      if(arguments.length === 0){
+        return new njQuery()
+      }
+      // 传递负数
+      else{
+        return njQuery(this.get(num))
+      }
+    },
+    first : function(){
+      return this.eq(0)
+    },
+    last : function(){
+      return this.eq(-1)
+    },
+    each : function(fn){
+      return njQuery.each(this, fn)
+    },
     init: function (selector) {
       // 1. 传入“” null undefined  NAN 0 false 返回空的jQuery对象
       selector = njQuery.trim(selector);
@@ -148,39 +184,57 @@ njQuery.extend({
         }
       })
     }
+  },
+  each: function (obj, fn) {
+    // 1.判断是否是数组
+    if(njQuery.isArray(obj)){
+        for(var i = 0; i < obj.length; i++){
+           // var res = fn(i, obj[i]);
+          var res = fn.call(obj[i], i, obj[i]);
+          if(res === true){
+              continue;
+          }else if(res === false){
+              break;
+          }
+        }
+    }
+    // 2.判断是否是对象
+    else if(njQuery.isObject(obj)){
+        for(var key in obj){
+            // var res = fn(key, obj[key]);
+            var res = fn.call(obj[key], key, obj[key]);
+            if(res === true){
+                continue;
+            }else if(res === false){
+                break;
+            }
+        }
+    }
+    return obj;
+},
+  map: function (obj, fn) {
+      var res = [];
+      // 1.判断是否是数组
+      if(njQuery.isArray(obj)){
+          for(var i = 0; i < obj.length; i++){
+              var temp = fn(obj[i], i);
+              if(temp){
+                  res.push(temp);
+              }
+          }
+      }
+      // 2.判断是否是对象
+      else if(njQuery.isObject(obj)){
+          for(var key in obj){
+              var temp =fn(obj[key], key);
+              if(temp){
+                  res.push(temp);
+              }
+          }
+      }
+      return res;
   }
-
 })
-
-  // njQuery.trim = function (str) {
-  //   if(!njQuery.isString(str)){
-  //     return str
-  //   }
-  //   if (str.trim) {
-  //     return str.trim();
-  //   } else {
-  //     return str.replace(/^\s+|\s+$/g, "");
-  //   }
-  // };
-  // njQuery.isObject = function(sele){
-  //   return typeof sele === "object"
-  // }
-  // njQuery.isWindow = function(sele){
-  //   return sele === window
-  // }
-  // njQuery.isArray = function(sele){
-  //   if(njQuery.isObject(sele) && !njQuery.isWindow && "length" in sele){
-  //     return true
-  //   }
-  //   return false
-  // }
-  // njQuery.isFunction = function(sele){
-  //   return typeof sele === "function"
-  // }
-
-
-
-
   njQuery.prototype.init.prototype = njQuery.prototype;
   window.njQuery = window.$ = njQuery;
 })(window);
